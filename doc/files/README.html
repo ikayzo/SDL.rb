@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>File: README [RDoc: Simple Declarative Language for Ruby]</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='file' id='wrapper'>
+      <div class='header'>
+        <div class='name'>README</div>
+        <div class='paths'>
+          README
+        </div>
+        <div class='last-update'>
+          Last Update:
+          <span class='datetime'>2010-08-06 13:03:22 +0900</span>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <h1>SDL (Simple Declarative Language)</h1>
+            <p>
+            SDL version supported: 1.3
+            </p>
+            <table>
+            <tr><td valign="top">Site:</td><td><a
+            href="http://www.ikayzo.org/confluence/display/SDL/Home">www.ikayzo.org/confluence/display/SDL/Home</a>
+            
+            </td></tr>
+            <tr><td valign="top">Downloads:</td><td><a
+            href="http://www.ikayzo.org/confluence/display/SDL/Downloads">www.ikayzo.org/confluence/display/SDL/Downloads</a>
+            
+            </td></tr>
+            <tr><td valign="top">Users mailing list:</td><td>sdl-users@ikayzo.org
+            
+            </td></tr>
+            <tr><td valign="top">Developers mailing list:</td><td>sdl-developers@ikayzo.org
+            
+            </td></tr>
+            </table>
+            <h2>Getting Started with <a href="../classes/SDL4R.html">SDL4R</a></h2>
+            <p>
+            To get the Ruby Gem:
+            </p>
+            <pre>gem install sdl4r</pre>
+            <p>
+            Then, you can start reading SDL documents:
+            </p>
+            <pre>require 'pathname'&#x000A;require 'sdl4r'&#x000A;&#x000A;root = SDL4R::read(Pathname.new(&quot;my_directory/my_config.sdl&quot;))&#x000A;puts root.attribute(&quot;port&quot;)</pre>
+            <p>
+            Or you can create SDL documents with the API:
+            </p>
+            <pre>require 'fileutils'&#x000A;require 'sdl4r'&#x000A;&#x000A;root = SDL4R::Tag.new(&quot;root&quot;) do&#x000A;    new_child(&quot;server&quot;) do&#x000A;        set_attribute(&quot;port&quot;, 1234)&#x000A;    end&#x000A;end&#x000A;File.open(&quot;my_directory/my_config.sdl&quot;, &quot;w&quot;) { |io|&#x000A;    io.write(root.children_to_string)&#x000A;}</pre>
+            <p>
+            which will write the following in your file:
+            </p>
+            <pre>server port=1234</pre>
+            <h2>SDL Documents</h2>
+            <p>
+            SDL documents are made up of Tags. A Tag contains
+            </p>
+            <ul>
+            <li>a name (if not present, the name &#8220;content&#8221; is used)
+            
+            </li>
+            <li>a namespace (optional)
+            
+            </li>
+            <li>0 or more values (optional)
+            
+            </li>
+            <li>0 or more attributes (optional)
+            
+            </li>
+            <li>0 or more children (optional)
+            
+            </li>
+            </ul>
+            <p>
+            For the SDL code:
+            </p>
+            <pre>size 4&#x000A;smoker false</pre>
+            <p>
+            Assuming this code is in a file called <tt>values.sdl</tt>, the values can
+            be read using the following code (ignoring exceptions):
+            </p>
+            <pre>root = Tag.new(&quot;root&quot;).read(Pathname.new(&quot;values.sdl&quot;))&#x000A;size = root.child(&quot;size&quot;).value&#x000A;smoker = root.child(&quot;smoker&quot;).value</pre>
+            <p>
+            A tag is basically a data structure with a list of values, a map of
+            attributes, and (if it has a body) child tags. In the example above, the
+            <tt>values.sdl</tt> file is read into a tag called &#8220;root&#8221;. It
+            has two children (tags) called &#8220;size&#8221; and &#8220;smoker&#8221;.
+            Both these children have one value, no attributes, and no bodies.
+            </p>
+            <p>
+            SDL is often used for simple key-value mappings. To simplify things Tag has
+            the methods getValue and setValue which operate on the first element in the
+            values list. Also notice SDL understands types which are determined using
+            type inference.
+            </p>
+            <p>
+            The example above used the simple format common in property files:
+            </p>
+            <pre>name value</pre>
+            <p>
+            The full SDL tag format is:
+            </p>
+            <pre>namespace:name value_list attribute_list {&#x000A;  children_tags&#x000A;}</pre>
+            <p>
+            where value_list is zero or more space separated SDL literals and
+            attribute_list is zero or more space separated
+            <tt>(namespace:)key=value</tt> pairs. The name, namespace, and keys are SDL
+            identifiers. Values are SDL literals. Namespace is optional for both tag
+            names and attributes. Tag bodies are also optional. SDL identifiers begin
+            with a unicode letter or an underscore (_) followed by zero or more unicode
+            letters, numbers, underscores (_), dashes (-) and periods (.).
+            </p>
+            <p>
+            Tags without bodies are terminated by a new line character (n) and may be
+            continue onto the next line by placing a backslash () at the end of the
+            line. Tags may be nested to an arbitrary depth. SDL ignores all other white
+            space characters between tokens. Although nested blocks are indented by
+            convention, tabs have no significance in the language.
+            </p>
+            <h2>Anonymous Tags</h2>
+            <p>
+            SDL also supports anonymous tags which are assigned the name
+            &#8220;content&#8221;. An anonymous tag starts with a literal and is
+            followed by zero or more additional literals and zero or more attributes.
+            The examples section below demonstrates the use of anonymous tags.
+            </p>
+            <pre>greetings {&#x000A;   &quot;hello&quot; language=&quot;English&quot;&#x000A;}&#x000A;&#x000A;# If we have a handle on the &quot;greetings&quot; tag we can access the&#x000A;# anonymous child tag by calling&#x000A;#    Tag child1 = greetingTag.getChild(&quot;content&quot;);</pre>
+            <h2>String literals</h2>
+            <p>
+            There are two ways to write String literals.
+            </p>
+            <h3>Starting and ending with double quotes (&#8220;)</h3>
+            <p>
+            Double quotes, backslash characters (), and new lines (n) within this type
+            of String literal must be escaped like so:
+            </p>
+            <pre>file &quot;C:\\folder\\file.txt&quot;&#x000A;say &quot;I said \&quot;something\&quot;&quot;</pre>
+            <p>
+            This type of String literal can be continued on the next line by placing a
+            backslash () at the end of the line like so:
+            </p>
+            <pre>line &quot;this is a \&#x000A;  long string of text&quot;</pre>
+            <p>
+            White space before the first character in the second line will be ignored.
+            </p>
+            <h3>Starting and ending with a backquote (`)</h3>
+            <p>
+            This type of string literal can only be ended with a second backquote (`).
+            It is not necessary (or possible) to escape any type of character within a
+            backquote string literal. This type of literal can also span lines. All
+            white spaces are preserved including new lines.
+            </p>
+            <p>
+            Examples:
+            </p>
+            <pre>file `C:\folder\file.txt`&#x000A;say `I said &quot;something&quot;`&#x000A;regex `\w+\.suite\(\)`&#x000A;long_line `This is&#x000A;    a long line&#x000A;    fee fi fo fum`</pre>
+            <p>
+            Note: SDL interprets new lines in `` String literals as a single new line
+            character (n) regarless of the platform.
+            </p>
+            <h2>Binary literals</h2>
+            <p>
+            Binary literals use base64 characters enclosed in square brackets ([]). The
+            binary literal type can also span lines. White space is ignored.
+            </p>
+            <p>
+            Examples:
+            </p>
+            <pre>key [sdf789GSfsb2+3324sf2] name=&quot;my key&quot;&#x000A;image [&#x000A;  R3df789GSfsb2edfSFSDF&#x000A;  uikuikk2349GSfsb2edfS&#x000A;  vFSDFR3df789GSfsb2edf&#x000A;]&#x000A;upload from=&quot;ikayzo.com&quot; data=[&#x000A;  R3df789GSfsb2edfSFSDF&#x000A;  uikuikk2349GSfsb2edfS&#x000A;  vFSDFR3df789GSfsb2edf&#x000A;]</pre>
+            <h2>Date and Time Literals</h2>
+            <p>
+            SDL supports date, time span, and date/time literals. Date and Date/Time
+            literals use a 24 hour clock (0-23). If a timezone is not specified, the
+            default locale&#8217;s timezone will be used.
+            </p>
+            <p>
+            Examples:
+            </p>
+            <ul>
+            <li>create a tag called &#8220;date&#8221; with a date value of Dec 5, 2005
+            
+            <pre>date 2005/12/05</pre>
+            </li>
+            <li>various time span literals
+            
+            <pre>hours 03:00:00&#x000A;minutes 00:12:00&#x000A;seconds 00:00:42&#x000A;short_time 00:12:32.423 # 12 minutes, 32 seconds, 423 milliseconds&#x000A;long_time 30d:15:23:04.023 # 30 days, 15 hours, 23 mins, 4 secs, 23 millis&#x000A;before -00:02:30 # 2 hours and 30 minutes ago</pre>
+            </li>
+            <li>a date time literal
+            
+            <pre>in_japan 2005/12/05 14:12:23.345-JST</pre>
+            </li>
+            </ul>
+            <h2>Literal Types</h2>
+            <p>
+            SDL 1.0 has thirteen literal types (parenthesis indicate optional
+            components)
+            </p>
+            <ol>
+            <li>string (unicode) - examples: <tt>&quot;hello&quot;</tt> or <tt>`aloha`</tt>
+            
+            </li>
+            <li>character (unicode) - example: <tt>'/'</tt> Note: uXXXX style unicode
+            escapes are not supported (or needed because sdl files are UTF8)
+            
+            </li>
+            <li>integer (32 bits signed) - example: <tt>123</tt>
+            
+            </li>
+            <li>long integer (64 bits signed) - examples: <tt>123L</tt> or <tt>123l</tt>
+            
+            </li>
+            <li>float (32 bits signed) - examples <tt>123.43F</tt> <tt>123.43f</tt>
+            
+            </li>
+            <li>double float (64 bits signed) - example: <tt>123.43</tt> or
+            <tt>123.43d</tt> or <tt>123.43D</tt>
+            
+            </li>
+            <li>decimal (128+ bits signed) - example: <tt>123.44BD</tt> or
+            <tt>123.44bd</tt>
+            
+            </li>
+            <li>boolean - examples: <tt>true</tt> or <tt>false</tt> or <tt>on</tt> or
+            <tt>off</tt>
+            
+            </li>
+            <li>date yyyy/mm/dd - example <tt>2005/12/05</tt>
+            
+            </li>
+            <li>date time yyyy/mm/dd hh:mm(:ss)(.xxx)(-ZONE) example - <tt>2005/12/05
+            05:21:23.532-JST</tt> notes: uses a 24 hour clock (0-23), only hours and
+            minutes are mandatory
+            
+            </li>
+            <li>time span using the format (d:)hh:mm:ss(.xxx) notes: if the day component
+            is included it must be suffixed with a lower case &#8216;d&#8217; examples
+            
+            <pre>12:14:42 # (12 hours, 14 minutes, 42 seconds)&#x000A;00:09:12 # (9 minutes, 12 seconds)&#x000A;00:00:01.023 # (1 second, 23 milliseconds)&#x000A;23d:05:21:23.532 # (23 days, 5 hours, 21 minutes, 23 seconds, 532 milliseconds)</pre>
+            </li>
+            <li>binary [base64] example - <tt>[sdf789GSfsb2+3324sf2]</tt>
+            
+            </li>
+            <li><tt>null</tt>
+            
+            </li>
+            </ol>
+            <p>
+            Timezones must be specified using a valid time zone ID (ex.
+            America/Los_Angeles), three letter abbreviation (ex. HST), or
+            GMT(+/-)hh(:mm) formatted custom timezone (ex. GMT+02 or GMT+02:30)
+            </p>
+            <p>
+            These types are designed to be portable across Java, .NET, and other
+            popular platforms.
+            </p>
+            <h2>SDL Comments</h2>
+            <p>
+            SDL supports four comment types.
+            </p>
+            <pre>1. // single line comments identicle to those used in Java, C, etc. // style&#x000A;  comments can occur anywhere in a line.  All text after // up to the new line&#x000A;  will be ignored.&#x000A;2. # property style comments.  They work the same way as //&#x000A;3. -- separator comments useful for visually dividing content.  They work the same way as //&#x000A;4. Slash star (/*) style multiline comments.  These begin with a slash&#x000A;  star and end with a star slash.  Everything in between is ignored.</pre>
+            <h2>Example</h2>
+            <p>
+            An example SDL file:
+            </p>
+            <pre># a tag having only a name&#x000A;my_tag&#x000A;&#x000A;# three tags acting as name value pairs&#x000A;first_name &quot;Akiko&quot;&#x000A;last_name &quot;Johnson&quot;&#x000A;height 68&#x000A;&#x000A;# a tag with a value list&#x000A;person &quot;Akiko&quot; &quot;Johnson&quot; 68&#x000A;&#x000A;# a tag with attributes&#x000A;person first_name=&quot;Akiko&quot; last_name=&quot;Johnson&quot; height=68&#x000A;&#x000A;# a tag with values and attributes&#x000A;person &quot;Akiko&quot; &quot;Johnson&quot; height=60&#x000A;&#x000A;# a tag with attributes using namespaces&#x000A;person name:first-name=&quot;Akiko&quot; name:last-name=&quot;Johnson&quot;&#x000A;&#x000A;# a tag with values, attributes, namespaces, and children&#x000A;my_namespace:person &quot;Akiko&quot; &quot;Johnson&quot; dimensions:height=68 {&#x000A;    son &quot;Nouhiro&quot; &quot;Johnson&quot;&#x000A;    daughter &quot;Sabrina&quot; &quot;Johnson&quot; location=&quot;Italy&quot; {&#x000A;        hobbies &quot;swimming&quot; &quot;surfing&quot;&#x000A;        languages &quot;English&quot; &quot;Italian&quot;&#x000A;        smoker false&#x000A;    }&#x000A;}&#x000A;&#x000A;------------------------------------------------------------------&#x000A;// (notice the separator style comment above...)&#x000A;&#x000A;# a log entry&#x000A;#     note - this tag has two values (date_time and string) and an&#x000A;#            attribute (error)&#x000A;entry 2005/11/23 10:14:23.253-GMT &quot;Something bad happened&quot; error=true&#x000A;&#x000A;# a long line&#x000A;mylist &quot;something&quot; &quot;another&quot; true &quot;shoe&quot; 2002/12/13 &quot;rock&quot; \&#x000A;    &quot;morestuff&quot; &quot;sink&quot; &quot;penny&quot; 12:15:23.425&#x000A;&#x000A;# a long string&#x000A;text &quot;this is a long rambling line of text with a continuation \&#x000A;   and it keeps going and going...&quot;&#x000A;&#x000A;# anonymous tag examples&#x000A;&#x000A;files {&#x000A;    &quot;/folder1/file.txt&quot;&#x000A;    &quot;/file2.txt&quot;&#x000A;}&#x000A;&#x000A;# To retrieve the files as a list of strings&#x000A;#&#x000A;#     List files = tag.getChild(&quot;files&quot;).getChildrenValues(&quot;content&quot;);&#x000A;#&#x000A;# We us the name &quot;content&quot; because the files tag has two children, each of&#x000A;# which are anonymous tags (values with no name.)  These tags are assigned&#x000A;# the name &quot;content&quot;&#x000A;&#x000A;matrix {&#x000A;    1 2 3&#x000A;    4 5 6&#x000A;}&#x000A;&#x000A;# To retrieve the values from the matrix (as a list of lists)&#x000A;#&#x000A;#     List rows = tag.getChild(&quot;matrix&quot;).getChildrenValues(&quot;content&quot;);</pre>
+            <p>
+            Example of getting the &#8220;location&#8221; attribute from the
+            &#8220;daughter&#8221; tag above (ignoring exceptions)
+            </p>
+            <pre>root = SDL4R.read(Pathname.new(&quot;myfile.sdl&quot;))&#x000A;daughter = root.child(&quot;daughter&quot;, true) // recursive search&#x000A;location = daughter.attribute(&quot;location&quot;)</pre>
+            <p>
+            SDL is normally stored in a file with the .sdl extension. These files
+            should always be encoded using UTF8. SDL fully supports unicode in
+            identifiers and literals.
+            </p>
+            <h2>Ruby and SDL types</h2>
+            <p>
+            The following list gives what types are used in Ruby in order to represent
+            SDL types.
+            </p>
+            <table>
+            <tr><td valign="top"><b>SDL</b>:</td><td><b>Ruby</b>
+            
+            </td></tr>
+            <tr><td valign="top">unicode string:</td><td>String
+            
+            </td></tr>
+            <tr><td valign="top">unicode character:</td><td>single-character String
+            
+            </td></tr>
+            <tr><td valign="top">integer (32 bits signed):</td><td>Integer (Fixnum or Bignum)
+            
+            </td></tr>
+            <tr><td valign="top">long integer (64 bits signed):</td><td>Integer (Fixnum or Bignum)
+            
+            </td></tr>
+            <tr><td valign="top">float (32 bits signed):</td><td>Float
+            
+            </td></tr>
+            <tr><td valign="top">double float (64 bits signed):</td><td>Float
+            
+            </td></tr>
+            <tr><td valign="top">decimal (128+ bits signed):</td><td>BigDecimal
+            
+            </td></tr>
+            <tr><td valign="top">boolean:</td><td>true (TrueClass) and false (FalseClass)
+            
+            </td></tr>
+            <tr><td valign="top">date (day):</td><td>Date
+            
+            </td></tr>
+            <tr><td valign="top">date time:</td><td>DateTime (see <a
+            href="../classes/SDL4R.html#M000003">SDL4R#new_date_time</a> if you want to
+            get Time instances from the parsers)
+            
+            </td></tr>
+            <tr><td valign="top">time span:</td><td>SdlTimeSpan
+            
+            </td></tr>
+            <tr><td valign="top">binary:</td><td>SdlBinary (to avoid confusion with simple strings)
+            
+            </td></tr>
+            <tr><td valign="top">null:</td><td>nil (NilClass)
+            
+            </td></tr>
+            </table>
+            <p>
+            TO FIX: the handling of floating numbers in Ruby being different from the
+            Java world, the behavior of <a href="../classes/SDL4R.html">SDL4R</a> at
+            limits might not be perfect for the time being.
+            </p>
+            <h2>UTF-8 Support</h2>
+            <p>
+            In Ruby 1.8, in order to enable UTF-8 support, you may have to declare the
+            following lines:
+            </p>
+            <pre>$KCODE = 'u'&#x000A;require 'jcode'</pre>
+            <p>
+            This will give you correct input and output and correct UTF-8
+            &#8220;general&#8221; sorting. Alternatively you can use the following
+            options when launching the Ruby interpreter:
+            </p>
+            <pre>/path/to/ruby -Ku -rjcode</pre>
+            <h2>License</h2>
+            <p>
+            Simple Declarative Language (SDL) for Ruby
+            </p>
+            <p>
+            Copyright 2005 Ikayzo, inc.
+            </p>
+            <p>
+            This program is free software. You can distribute or modify it under the
+            terms of the GNU Lesser General Public License version 2.1 as published by
+            the Free Software Foundation.
+            </p>
+            <p>
+            This program is distributed AS IS and WITHOUT WARRANTY. OF ANY KIND,
+            INCLUDING MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+            Lesser General Public License for more details.
+            </p>
+            <p>
+            You should have received a copy of the GNU Lesser General Public License
+            along with this program; if not, contact the Free Software Foundation,
+            Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+            </p>
+          </div>
+          <div id='section'>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

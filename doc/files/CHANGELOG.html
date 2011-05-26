@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>File: CHANGELOG [RDoc: Simple Declarative Language for Ruby]</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='file' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>CHANGELOG</h1>
+        <div class='paths'>
+          CHANGELOG
+        </div>
+        <div class='last-update'>
+          Last Update:
+          <span class='datetime'>2010-08-26 22:49:12 +0900</span>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <h2>v0.9.8 (建設中)</h2>
+            <h2>v0.9.7 (26-auf-2010)</h2>
+            <h3>Major changes:</h3>
+            <ul>
+            <li>It could prove a hassle to use the block idiom of Tag.new or Tag.new_child
+            when handling another set of data. Therefore, if the given block takes a
+            (not-optional) parameter, the context remains the context of the calling
+            code.
+            
+            <pre>class Elephant&#x000A;&#x000A;  def initialize&#x000A;     @weight = 1000&#x000A;  end&#x000A;&#x000A;  def to_sdl&#x000A;    SDL4R::Tag.new(&quot;elephant&quot;) do |tag|&#x000A;      tag.set_attribute(&quot;weight&quot;, @weight)&#x000A;      tag &lt;&lt; &quot;I love pink ones.&quot;&#x000A;    end&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;puts Elephant.new.to_sdl.to_s # ==&gt; elephant &quot;I love pink ones.&quot; weight=1000</pre>
+            </li>
+            <li>Tag.to_xml_string() has been refactor to take an option Hash (backward
+            incompatible):
+            
+            <dl>
+            <dt>:line_prefix</dt><dd>a text prefixing each line (default: &#8220;&#8221;)
+            
+            </dd>
+            <dt>:uri_by_namespace</dt><dd>a Hash giving the URIs for the namespaces
+            
+            </dd>
+            <dt>:indent</dt><dd>text specifying one indentation (default: &#8220;t&#8220;)
+            
+            </dd>
+            <dt>:eol</dt><dd>end of line expression (default: &#8220;n&#8220;)
+            
+            </dd>
+            <dt>:omit_null_attributes</dt><dd>if true, null/nil attributes are not exported (default: false). Otherwise,
+            they are exported as follows:
+            
+            <pre>tag attr=&quot;null&quot;</pre>
+            </dd>
+            </dl>
+            </li>
+            <li>Fixed the parsing of line continuations with anti-slashes.
+            
+            </li>
+            <li>Fixed the parsing of double-quoted strings. It is better at detecting badly
+            formed strings, now.
+            
+            </li>
+            <li>Fixed the reporting of lines and columns in errors. Although the column
+            might be slightly off sometimes, the line should be correct.
+            
+            </li>
+            </ul>
+            <h3>Minor changes:</h3>
+            <ul>
+            <li>The RDoc is now generated with the template <a
+            href="http://github.com/mislav/hanna/tree/master">Hanna</a>.
+            
+            </li>
+            <li>Tag.<< now behaves with Enumerables (except Strings) as it does with
+            Arrays.
+            
+            </li>
+            </ul>
+            <h2>v0.9.6 (10-aug-2010)</h2>
+            <h3>Major changes:</h3>
+            <ul>
+            <li>Tag.set_attribute(): fixed as it failed if the value was nil.
+            
+            </li>
+            <li>Tag.write(): now returns the given output (especially necessary if a String
+            was given).
+            
+            </li>
+            <li>Tag.write(): fixed as it failed when writing children without including the
+            root Tag.
+            
+            </li>
+            <li>Tag.write(): it is now possible to give a StringIO as an output
+            
+            </li>
+            </ul>
+            <h2>v0.9.5 (8-aug-2010)</h2>
+            <h3>Major changes:</h3>
+            <ul>
+            <li>Fixes in order to make <a href="../classes/SDL4R.html">SDL4R</a> work in
+            Ruby 1.9 (mainly concerning encodings and dates).
+            
+            </li>
+            <li>Commented out debug code (writing to files) inside sdl4r_test.rb.
+            
+            </li>
+            </ul>
+            <h3>Minor changes:</h3>
+            <ul>
+            <li>General &amp; contact info in the <a href="README.html">README</a>
+            
+            </li>
+            </ul>
+            <h2>v0.9.4 (6-aug-2010)</h2>
+            <h3>Major changes:</h3>
+            <ul>
+            <li>The use of BigDecimal (standard) has been preferred to Flt::DecNum.
+            
+            </li>
+            <li>&#8220;sdl4r/sdl.rb&#8220; has been renamed to &#8220;sdl4r/sdl4r.rb&#8220;
+            
+            </li>
+            <li>A sdl4r.rb has been added so that users can actually write (as the
+            documentation pretended):
+            
+            <pre>require 'sdl4r'</pre>
+            </li>
+            <li><a href="../classes/SDL4R.html#M000004">SDL4R#coerce_or_fail</a> has been
+            implemented, which means that random objects cannot be added to a Tag as
+            before. Rational instances are coerced using Rational#to_f.
+            
+            </li>
+            <li>Added usual time methods to SdlTimeSpan: day(), hour(), min(), sec(),
+            usec()
+            
+            </li>
+            </ul>
+            <h2>v0.9.3</h2>
+            <h3>Major changes</h3>
+            <ul>
+            <li>Tag: any method that use to take namespace/name parameters now follows the
+            natural order &#8220;namespace&#8221; and then &#8220;name&#8221;:
+            
+            <pre>Tag.new &quot;ns1&quot;, &quot;tag1&quot;</pre>
+            <p>
+            WARNING: this was the contrary before!!! Also, the &#8220;recursive&#8221;
+            parameter should always be at the first place now.
+            </p>
+            </li>
+            <li>It is now possible to override SDL4R::new_date_time in order to create Time
+            instances when parsing rather than DateTime instances.
+            
+            </li>
+            </ul>
+          </div>
+          <div id='section'>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

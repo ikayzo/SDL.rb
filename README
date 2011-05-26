@@ -1,0 +1,380 @@
+= SDL (Simple Declarative Language)
+
+SDL version supported: 1.3
+
+Site:: http://www.ikayzo.org/confluence/display/SDL/Home
+Downloads:: http://www.ikayzo.org/confluence/display/SDL/Downloads
+
+Users mailing list:: sdl-users@ikayzo.org
+Developers mailing list:: sdl-developers@ikayzo.org
+
+
+== Getting Started with SDL4R
+
+To get the Ruby Gem:
+
+    gem install sdl4r
+
+Then, you can start reading SDL documents:
+
+    require 'pathname'
+    require 'sdl4r'
+
+    root = SDL4R::read(Pathname.new("my_directory/my_config.sdl"))
+    puts root.attribute("port")
+
+Or you can create SDL documents with the API:
+
+    require 'fileutils'
+    require 'sdl4r'
+
+    root = SDL4R::Tag.new("root") do
+        new_child("server") do
+            set_attribute("port", 1234)
+        end
+    end
+    File.open("my_directory/my_config.sdl", "w") { |io|
+        io.write(root.children_to_string)
+    }
+
+which will write the following in your file:
+
+    server port=1234
+
+== SDL Documents
+
+SDL documents are made up of Tags. A Tag contains
+
+* a name (if not present, the name "content" is used)
+* a namespace (optional)
+* 0 or more values (optional)
+* 0 or more attributes (optional)
+* 0 or more children (optional)
+
+For the SDL code:
+
+  size 4
+  smoker false
+
+
+Assuming this code is in a file called <tt>values.sdl</tt>, the values can be read
+using the following code (ignoring exceptions):
+
+  root = Tag.new("root").read(Pathname.new("values.sdl"))
+  size = root.child("size").value
+  smoker = root.child("smoker").value
+
+A tag is basically a data structure with a list of values, a map of
+attributes, and (if it has a body) child tags.  In the example above, the
+<tt>values.sdl</tt> file is read into a tag called "root".  It has two children
+(tags) called "size" and "smoker".  Both these children have one value, no
+attributes, and no bodies.
+
+SDL is often used for simple key-value mappings.  To simplify things Tag
+has the methods getValue and setValue which operate on the first element in
+the values list.  Also notice SDL understands types which are determined
+using type inference.
+
+The example above used the simple format common in property files:
+
+  name value
+
+The full SDL tag format is:
+
+  namespace:name value_list attribute_list {
+    children_tags
+  }
+
+where value_list is zero or more space separated SDL literals and
+attribute_list is zero or more space separated <tt>(namespace:)key=value</tt> pairs.
+The name, namespace, and keys are SDL identifiers.  Values are SDL literals.
+Namespace is optional for both tag names and attributes.  Tag bodies are also
+optional.  SDL identifiers begin with a unicode letter or an underscore (_)
+followed by zero or more unicode letters, numbers, underscores (_),
+dashes (-) and periods (.).
+
+Tags without bodies are terminated by a new line character (\n) and may be
+continue onto the next line by placing a backslash (\) at the end of the
+line.  Tags may be nested to an arbitrary depth.  SDL ignores all other white
+space characters between tokens.  Although nested blocks are indented by
+convention, tabs have no significance in the language.
+
+== Anonymous Tags
+
+SDL also supports anonymous tags which are assigned the name "content".
+An anonymous tag starts with a literal and is followed by zero or more
+additional literals and zero or more attributes.  The examples section below
+demonstrates the use of anonymous tags.
+
+    greetings {
+       "hello" language="English"
+    }
+
+    # If we have a handle on the "greetings" tag we can access the
+    # anonymous child tag by calling
+    #    Tag child1 = greetingTag.getChild("content");
+
+== String literals
+
+There are two ways to write String literals.
+
+=== Starting and ending with double quotes (")
+
+Double quotes, backslash characters (\), and new lines (\n) within this type of String literal
+must be escaped like so:
+
+  file "C:\\folder\\file.txt"
+  say "I said \"something\""
+
+This type of String literal can be continued on the next line by placing a
+backslash (\) at the end of the line like so:
+
+  line "this is a \
+    long string of text"
+
+White space before the first character in the second line will be ignored.
+
+=== Starting and ending with a backquote (`)
+
+This type of string literal
+can only be ended with a second backquote (`).  It is not necessary (or
+possible) to escape any type of character within a backquote string
+literal. This type of literal can also span lines. All white spaces are
+preserved including new lines.
+
+Examples:
+
+  file `C:\folder\file.txt`
+  say `I said "something"`
+  regex `\w+\.suite\(\)`
+  long_line `This is
+      a long line
+      fee fi fo fum`
+
+Note: SDL interprets new lines in `` String literals as a single new line
+character (\n) regarless of the platform.
+
+== Binary literals
+
+Binary literals use base64 characters enclosed in square brackets ([]).
+The binary literal type can also span lines.  White space is ignored.
+
+Examples:
+  key [sdf789GSfsb2+3324sf2] name="my key"
+  image [
+    R3df789GSfsb2edfSFSDF
+    uikuikk2349GSfsb2edfS
+    vFSDFR3df789GSfsb2edf
+  ]
+  upload from="ikayzo.com" data=[
+    R3df789GSfsb2edfSFSDF
+    uikuikk2349GSfsb2edfS
+    vFSDFR3df789GSfsb2edf
+  ]
+
+== Date and Time Literals
+
+SDL supports date, time span, and date/time literals.  Date and Date/Time
+literals use a 24 hour clock (0-23).  If a timezone is not specified, the
+default locale's timezone will be used.
+
+Examples:
+
+* create a tag called "date" with a date value of Dec 5, 2005
+    date 2005/12/05
+
+* various time span literals
+    hours 03:00:00
+    minutes 00:12:00
+    seconds 00:00:42
+    short_time 00:12:32.423 # 12 minutes, 32 seconds, 423 milliseconds
+    long_time 30d:15:23:04.023 # 30 days, 15 hours, 23 mins, 4 secs, 23 millis
+    before -00:02:30 # 2 hours and 30 minutes ago
+
+* a date time literal
+    in_japan 2005/12/05 14:12:23.345-JST
+
+== Literal Types
+
+SDL 1.0 has thirteen literal types (parenthesis indicate optional components)
+
+1. string (unicode) - examples: <tt>"hello"</tt> or <tt>`aloha`</tt>
+2. character (unicode) - example: <tt>'/'</tt>
+   Note: \uXXXX style unicode escapes are not supported (or needed because sdl files are UTF8)
+3. integer (32 bits signed) - example: <tt>123</tt>
+4. long integer (64 bits signed) - examples: <tt>123L</tt> or <tt>123l</tt>
+5. float (32 bits signed) - examples <tt>123.43F</tt> <tt>123.43f</tt>
+6. double float (64 bits signed) - example: <tt>123.43</tt> or <tt>123.43d</tt> or <tt>123.43D</tt>
+7. decimal (128+ bits signed) - example: <tt>123.44BD</tt> or <tt>123.44bd</tt>
+8. boolean - examples: <tt>true</tt> or <tt>false</tt> or <tt>on</tt> or <tt>off</tt>
+9. date yyyy/mm/dd - example <tt>2005/12/05</tt>
+10. date time yyyy/mm/dd hh:mm(:ss)(.xxx)(-ZONE)
+    example - <tt>2005/12/05 05:21:23.532-JST</tt>
+    notes: uses a 24 hour clock (0-23), only hours and minutes are mandatory
+11. time span using the format (d:)hh:mm:ss(.xxx)
+    notes: if the day component is included it must be suffixed with a lower case 'd'
+    examples
+        12:14:42 # (12 hours, 14 minutes, 42 seconds)
+        00:09:12 # (9 minutes, 12 seconds)
+        00:00:01.023 # (1 second, 23 milliseconds)
+        23d:05:21:23.532 # (23 days, 5 hours, 21 minutes, 23 seconds, 532 milliseconds)
+12. binary [base64] example - <tt>[sdf789GSfsb2+3324sf2]</tt>
+13. <tt>null</tt>
+
+
+Timezones must be specified using a valid time zone ID (ex. America/Los_Angeles), three letter
+abbreviation (ex. HST), or GMT(+/-)hh(:mm) formatted custom timezone (ex. GMT+02 or GMT+02:30)
+
+These types are designed to be portable across Java, .NET, and other popular platforms.
+
+== SDL Comments
+
+SDL supports four comment types.
+
+  1. // single line comments identicle to those used in Java, C, etc. // style
+    comments can occur anywhere in a line.  All text after // up to the new line
+    will be ignored.
+  2. # property style comments.  They work the same way as //
+  3. -- separator comments useful for visually dividing content.  They work the same way as //
+  4. Slash star (/*) style multiline comments.  These begin with a slash
+    star and end with a star slash.  Everything in between is ignored.
+
+
+== Example
+
+An example SDL file:
+
+    # a tag having only a name
+    my_tag
+
+    # three tags acting as name value pairs
+    first_name "Akiko"
+    last_name "Johnson"
+    height 68
+
+    # a tag with a value list
+    person "Akiko" "Johnson" 68
+
+    # a tag with attributes
+    person first_name="Akiko" last_name="Johnson" height=68
+
+    # a tag with values and attributes
+    person "Akiko" "Johnson" height=60
+
+    # a tag with attributes using namespaces
+    person name:first-name="Akiko" name:last-name="Johnson"
+
+    # a tag with values, attributes, namespaces, and children
+    my_namespace:person "Akiko" "Johnson" dimensions:height=68 {
+        son "Nouhiro" "Johnson"
+        daughter "Sabrina" "Johnson" location="Italy" {
+            hobbies "swimming" "surfing"
+            languages "English" "Italian"
+            smoker false
+        }
+    }
+
+    ------------------------------------------------------------------
+    // (notice the separator style comment above...)
+
+    # a log entry
+    #     note - this tag has two values (date_time and string) and an
+    #            attribute (error)
+    entry 2005/11/23 10:14:23.253-GMT "Something bad happened" error=true
+
+    # a long line
+    mylist "something" "another" true "shoe" 2002/12/13 "rock" \
+        "morestuff" "sink" "penny" 12:15:23.425
+
+    # a long string
+    text "this is a long rambling line of text with a continuation \
+       and it keeps going and going..."
+
+    # anonymous tag examples
+
+    files {
+        "/folder1/file.txt"
+        "/file2.txt"
+    }
+
+    # To retrieve the files as a list of strings
+    #
+    #     List files = tag.getChild("files").getChildrenValues("content");
+    #
+    # We us the name "content" because the files tag has two children, each of
+    # which are anonymous tags (values with no name.)  These tags are assigned
+    # the name "content"
+
+    matrix {
+        1 2 3
+        4 5 6
+    }
+
+    # To retrieve the values from the matrix (as a list of lists)
+    #
+    #     List rows = tag.getChild("matrix").getChildrenValues("content");
+
+
+Example of getting the "location" attribute from the "daughter" tag
+above (ignoring exceptions)
+
+     root = SDL4R.read(Pathname.new("myfile.sdl"))
+     daughter = root.child("daughter", true) // recursive search
+     location = daughter.attribute("location")
+
+SDL is normally stored in a file with the .sdl extension.  These files
+should always be encoded using UTF8.  SDL fully supports unicode in
+identifiers and literals.
+
+== Ruby and SDL types
+
+The following list gives what types are used in Ruby in order to represent SDL types.
+
+*SDL*:: *Ruby*
+unicode string:: String
+unicode character:: single-character String
+integer (32 bits signed):: Integer (Fixnum or Bignum)
+long integer (64 bits signed):: Integer (Fixnum or Bignum)
+float (32 bits signed):: Float
+double float (64 bits signed):: Float
+decimal (128+ bits signed):: BigDecimal
+boolean:: true (TrueClass) and false (FalseClass)
+date (day):: Date
+date time:: DateTime (see SDL4R#new_date_time if you want to get Time instances from the parsers)
+time span:: SdlTimeSpan
+binary:: SdlBinary (to avoid confusion with simple strings)
+null:: nil (NilClass)
+
+TO FIX: the handling of floating numbers in Ruby being different from the Java world, the behavior
+of SDL4R at limits might not be perfect for the time being.
+
+== UTF-8 Support
+
+In Ruby 1.8, in order to enable UTF-8 support, you may have to declare the following lines:
+
+    $KCODE = 'u'
+    require 'jcode'
+
+This will give you correct input and output and correct UTF-8 "general" sorting.
+Alternatively you can use the following options when launching the Ruby interpreter:
+
+    /path/to/ruby -Ku -rjcode
+
+
+== License
+
+Simple Declarative Language (SDL) for Ruby
+
+Copyright 2005 Ikayzo, inc.
+
+This program is free software. You can distribute or modify it under the
+terms of the GNU Lesser General Public License version 2.1 as published by
+the Free Software Foundation.
+
+This program is distributed AS IS and WITHOUT WARRANTY. OF ANY KIND,
+INCLUDING MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this program; if not, contact the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.

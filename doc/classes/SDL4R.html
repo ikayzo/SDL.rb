@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: SDL4R [RDoc: Simple Declarative Language for Ruby]</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          SDL4R
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../files/lib/sdl4r/sdl_time_span_rb.html">lib/sdl4r/sdl_time_span.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/sdl_parse_error_rb.html">lib/sdl4r/sdl_parse_error.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/tag_rb.html">lib/sdl4r/tag.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/parser_rb.html">lib/sdl4r/parser.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/sdl_binary_rb.html">lib/sdl4r/sdl_binary.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/parser/reader_rb.html">lib/sdl4r/parser/reader.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/parser/tokenizer_rb.html">lib/sdl4r/parser/tokenizer.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/parser/token_rb.html">lib/sdl4r/parser/token.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/sdl4r_rb.html">lib/sdl4r/sdl4r.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/sdl4r/parser/time_span_with_zone_rb.html">lib/sdl4r/parser/time_span_with_zone.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/test/sdl4r/parser_test_rb.html">test/sdl4r/parser_test.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/test/sdl4r/tag_test_rb.html">test/sdl4r/tag_test.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/test/sdl4r/sdl_test_rb.html">test/sdl4r/sdl_test.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/test/sdl4r/sdl4r_test_rb.html">test/sdl4r/sdl4r_test.rb</a>
+          </li>
+          <li>
+            <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <hr size="1"></hr><p>
+            Gathers utility methods.
+            </p>
+            <hr size="1"></hr>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000001">SdlBinary</a></li>
+              <li><a href="#M000004">coerce_or_fail</a></li>
+              <li><a href="#M000002">format</a></li>
+              <li><a href="#M000003">new_date_time</a></li>
+              <li><a href="#M000006">read</a></li>
+              <li><a href="#M000009">to_attribute_map</a></li>
+              <li><a href="#M000007">to_value</a></li>
+              <li><a href="#M000008">to_value_array</a></li>
+              <li><a href="#M000005">validate_identifier</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              Class <a href="SDL4R/Parser.html" class="link">SDL4R::Parser</a><br />
+              Class <a href="SDL4R/ParserTest.html" class="link">SDL4R::ParserTest</a><br />
+              Class <a href="SDL4R/SDL4RTest.html" class="link">SDL4R::SDL4RTest</a><br />
+              Class <a href="SDL4R/SDLTest.html" class="link">SDL4R::SDLTest</a><br />
+              Class <a href="SDL4R/SdlBinary.html" class="link">SDL4R::SdlBinary</a><br />
+              Class <a href="SDL4R/SdlParseError.html" class="link">SDL4R::SdlParseError</a><br />
+              Class <a href="SDL4R/SdlTimeSpan.html" class="link">SDL4R::SdlTimeSpan</a><br />
+              Class <a href="SDL4R/Tag.html" class="link">SDL4R::Tag</a><br />
+              Class <a href="SDL4R/TagTest.html" class="link">SDL4R::TagTest</a><br />
+            </div>
+            <div id='constants-list'>
+              <h2>Constants</h2>
+              <div class='name-list'>
+                <table summary='Constants'>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>MAX_INTEGER_32</td>
+                    <td>=</td>
+                    <td class='context-item-value'>2**31 - 1</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>MIN_INTEGER_32</td>
+                    <td>=</td>
+                    <td class='context-item-value'>-(2**31)</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>MAX_INTEGER_64</td>
+                    <td>=</td>
+                    <td class='context-item-value'>2**63 - 1</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>MIN_INTEGER_64</td>
+                    <td>=</td>
+                    <td class='context-item-value'>-(2**63)</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>BASE64_WRAP_LINE_LENGTH</td>
+                    <td>=</td>
+                    <td class='context-item-value'>72</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>ESCAPED_QUOTES</td>
+                    <td>=</td>
+                    <td class='context-item-value'>{       &quot;\&quot;&quot; =&gt; &quot;\\\&quot;&quot;,       &quot;'&quot; =&gt; &quot;\\'&quot;,       &quot;`&quot; =&gt; &quot;\\`&quot;,     }</td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>ESCAPED_CHARS</td>
+                    <td>=</td>
+                    <td class='context-item-value'>{       &quot;\\&quot; =&gt; &quot;\\\\&quot;,       &quot;\t&quot; =&gt; &quot;\\t&quot;,       &quot;\r&quot; =&gt; &quot;\\r&quot;,       &quot;\n&quot; =&gt; &quot;\\n&quot;,     }</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000001'>
+                <a name='M000001'></a>
+                <div class='synopsis'>
+                  <span class='name'>SdlBinary</span>
+                  <span class='arguments'>(o)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Try to coerce &#8216;o&#8217; into a <a
+                  href="SDL4R.html#M000001">SdlBinary</a>. Raise an ArgumentError if it
+                  fails.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000001-source'>    <span class="ruby-comment cmt"># File lib/sdl4r/sdl_binary.rb, line 72</span>&#x000A;72:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-constant">SdlBinary</span>(<span class="ruby-identifier">o</span>)&#x000A;73:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">SdlBinary</span>&#x000A;74:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>&#x000A;75:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">String</span>&#x000A;76:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">SdlBinary</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>)&#x000A;77:     <span class="ruby-keyword kw">else</span>&#x000A;78:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;can't coerce argument&quot;</span>&#x000A;79:     <span class="ruby-keyword kw">end</span>&#x000A;80:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000004'>
+                <a name='M000004'></a>
+                <div class='synopsis'>
+                  <span class='name'>coerce_or_fail</span>
+                  <span class='arguments'>(o)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Coerce the type to a standard SDL type or raises an ArgumentError.
+                  </p>
+                  <p>
+                  Returns <tt>o</tt> if of the following classes: NilClass, String, Numeric,
+                  Float, TrueClass, FalseClass, Date, DateTime, Time, <a
+                  href="SDL4R/SdlTimeSpan.html">SdlTimeSpan</a>, <a
+                  href="SDL4R.html#M000001">SdlBinary</a>,
+                  </p>
+                  <p>
+                  Rationals are turned into Floats using Rational#to_f.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000004-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 151</span>&#x000A;151:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">coerce_or_fail</span>(<span class="ruby-identifier">o</span>)&#x000A;152:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">o</span>&#x000A;153: &#x000A;154:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Rational</span>&#x000A;155:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_f</span>&#x000A;156: &#x000A;157:     <span class="ruby-keyword kw">when</span> <span class="ruby-constant">NilClass</span>,&#x000A;158:         <span class="ruby-constant">String</span>,&#x000A;159:         <span class="ruby-constant">Numeric</span>,&#x000A;160:         <span class="ruby-constant">Float</span>,&#x000A;161:         <span class="ruby-constant">TrueClass</span>,&#x000A;162:         <span class="ruby-constant">FalseClass</span>,&#x000A;163:         <span class="ruby-constant">Date</span>,&#x000A;164:         <span class="ruby-constant">DateTime</span>,&#x000A;165:         <span class="ruby-constant">Time</span>,&#x000A;166:         <span class="ruby-constant">SdlTimeSpan</span>,&#x000A;167:         <span class="ruby-constant">SdlBinary</span>&#x000A;168:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>&#x000A;169: &#x000A;170:     <span class="ruby-keyword kw">end</span>&#x000A;171: &#x000A;172:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;#{o.class.name} is not coercible to an SDL type&quot;</span>&#x000A;173:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000002'>
+                <a name='M000002'></a>
+                <div class='synopsis'>
+                  <span class='name'>format</span>
+                  <span class='arguments'>(o, add_quotes = true, line_prefix = &quot;&quot;, indent = &quot;\t&quot;)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Creates an SDL string representation for a given object and returns it.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><tt>o</tt>:</td><td>the object to format
+                  
+                  </td></tr>
+                  <tr><td valign="top"><tt>add_quotes</tt>:</td><td>indicates whether quotes will be added to Strings and characters (true by
+                  default)
+                  
+                  </td></tr>
+                  <tr><td valign="top"><tt>line_prefix</tt>:</td><td>the line prefix to use (&#8220;&#8221; by default)
+                  
+                  </td></tr>
+                  <tr><td valign="top"><tt>indent</tt>:</td><td>the indent string to use (&#8220;t&#8220; by default)
+                  
+                  </td></tr>
+                  </table>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000002-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 44</span>&#x000A; 44:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">o</span>, <span class="ruby-identifier">add_quotes</span> = <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">line_prefix</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A; 45:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)&#x000A; 46:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">add_quotes</span>&#x000A; 47:         <span class="ruby-identifier">o_length</span> = <span class="ruby-value">0</span>&#x000A; 48:         <span class="ruby-identifier">o</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/./</span><span class="ruby-identifier">m</span>) { <span class="ruby-identifier">o_length</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> } <span class="ruby-comment cmt"># counts the number of chars (as opposed of bytes)</span>&#x000A; 49:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o_length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>&#x000A; 50:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">escape</span>(<span class="ruby-identifier">o</span>, <span class="ruby-value str">&quot;'&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;'&quot;</span>&#x000A; 51:         <span class="ruby-keyword kw">else</span>&#x000A; 52:           <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&quot;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">escape</span>(<span class="ruby-identifier">o</span>, <span class="ruby-value str">'&quot;'</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'&quot;'</span>&#x000A; 53:         <span class="ruby-keyword kw">end</span>&#x000A; 54:       <span class="ruby-keyword kw">else</span>&#x000A; 55:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">escape</span>(<span class="ruby-identifier">o</span>)&#x000A; 56:       <span class="ruby-keyword kw">end</span>&#x000A; 57:       &#x000A; 58:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Bignum</span>)&#x000A; 59:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;BD&quot;</span>&#x000A; 60:       &#x000A; 61:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)&#x000A; 62:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">MIN_INTEGER_32</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">o</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">MAX_INTEGER_32</span>&#x000A; 63:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>&#x000A; 64:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">MIN_INTEGER_64</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">o</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">MAX_INTEGER_64</span>&#x000A; 65:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;L&quot;</span>&#x000A; 66:       <span class="ruby-keyword kw">else</span>&#x000A; 67:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;BD&quot;</span>&#x000A; 68:       <span class="ruby-keyword kw">end</span>&#x000A; 69:       &#x000A; 70:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Float</span>)&#x000A; 71:       <span class="ruby-keyword kw">return</span> (<span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;F&quot;</span>)&#x000A; 72:       &#x000A; 73:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Rational</span>)&#x000A; 74:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_f</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;F&quot;</span>&#x000A; 75: &#x000A; 76:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">BigDecimal</span>)&#x000A; 77:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value str">'F'</span>)&#x000A; 78:       <span class="ruby-identifier">s</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp re">/\.0$/</span>, <span class="ruby-value str">&quot;&quot;</span>)&#x000A; 79:       <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{s}BD&quot;</span>&#x000A; 80: &#x000A; 81:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">nil?</span>&#x000A; 82:       <span class="ruby-keyword kw">return</span> <span class="ruby-value str">&quot;null&quot;</span>&#x000A; 83: &#x000A; 84:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">SdlBinary</span>)&#x000A; 85:       <span class="ruby-identifier">encoded_o</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">bytes</span>)&#x000A; 86:       <span class="ruby-identifier">encoded_o</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/[\r\n]/</span><span class="ruby-identifier">m</span>, <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt"># Remove the EOL inserted every 60 chars</span>&#x000A; 87: &#x000A; 88:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">add_quotes</span>&#x000A; 89:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">encoded_o</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">BASE64_WRAP_LINE_LENGTH</span>&#x000A; 90:           <span class="ruby-comment cmt"># FIXME: we should a constant or some parameter instead of hardcoded spaces</span>&#x000A; 91:           <span class="ruby-identifier">wrap_lines_in_ascii</span>(<span class="ruby-identifier">encoded_o</span>, <span class="ruby-constant">BASE64_WRAP_LINE_LENGTH</span>, <span class="ruby-node">&quot;#{line_prefix}#{indent}&quot;</span>)&#x000A; 92:           <span class="ruby-identifier">encoded_o</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;[#{$/}&quot;</span>)&#x000A; 93:           <span class="ruby-identifier">encoded_o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{$/}#{line_prefix}]&quot;</span>&#x000A; 94:         <span class="ruby-keyword kw">else</span>&#x000A; 95:           <span class="ruby-identifier">encoded_o</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;[&quot;</span>)&#x000A; 96:           <span class="ruby-identifier">encoded_o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;]&quot;</span>&#x000A; 97:         <span class="ruby-keyword kw">end</span>&#x000A; 98:       <span class="ruby-keyword kw">end</span>&#x000A; 99: &#x000A;100:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">encoded_o</span>&#x000A;101:       &#x000A;102:     <span class="ruby-comment cmt"># Below, we use &quot;#{o.year}&quot; instead of &quot;%Y&quot; because &quot;%Y&quot; always emit 4 chars at least even if</span>&#x000A;103:     <span class="ruby-comment cmt"># the date is before 1000.</span>&#x000A;104:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">DateTime</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Time</span>)&#x000A;105:       <span class="ruby-identifier">milliseconds</span> = <span class="ruby-identifier">get_datetime_milliseconds</span>(<span class="ruby-identifier">o</span>)&#x000A;106: &#x000A;107:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">milliseconds</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>&#x000A;108:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">zone</span>&#x000A;109:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;#{o.year}/%m/%d %H:%M:%S%Z&quot;</span>)&#x000A;110:         <span class="ruby-keyword kw">else</span>&#x000A;111:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;#{o.year}/%m/%d %H:%M:%S&quot;</span>)&#x000A;112:         <span class="ruby-keyword kw">end</span>&#x000A;113:       <span class="ruby-keyword kw">else</span>&#x000A;114:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">zone</span>&#x000A;115:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;#{o.year}/%m/%d %H:%M:%S.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">milliseconds</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">ljust</span>(<span class="ruby-value">3</span>, <span class="ruby-value str">'0'</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;%Z&quot;</span>)&#x000A;116:         <span class="ruby-keyword kw">else</span>&#x000A;117:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;#{o.year}/%m/%d %H:%M:%S.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">milliseconds</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">ljust</span>(<span class="ruby-value">3</span>, <span class="ruby-value str">'0'</span>))&#x000A;118:         <span class="ruby-keyword kw">end</span>&#x000A;119:       <span class="ruby-keyword kw">end</span>&#x000A;120: &#x000A;121:     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Date</span>)&#x000A;122:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;#{o.year}/%m/%d&quot;</span>)&#x000A;123:       &#x000A;124:     <span class="ruby-keyword kw">else</span>&#x000A;125:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_s</span>&#x000A;126:     <span class="ruby-keyword kw">end</span>&#x000A;127:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000003'>
+                <a name='M000003'></a>
+                <div class='synopsis'>
+                  <span class='name'>new_date_time</span>
+                  <span class='arguments'>(year, month, day, hour, min, sec, time_zone_offset)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Creates and returns the object representing a datetime (DateTime in the
+                  default implementation). This method is, by default, called by the <a
+                  href="SDL4R/Parser.html">Parser</a> class. It could be overriden as follows
+                  in order to get Time instances from all the <a href="SDL4R.html">SDL4R</a>
+                  parsers.
+                  </p>
+                  <pre>module SDL4R&#x000A;  def self.new_date_time(year, month, day, hour, min, sec, time_zone_offset)&#x000A;    Time.utc(year, month, day, hour, min, sec)&#x000A;  end&#x000A;end</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000003-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 139</span>&#x000A;139:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_date_time</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">month</span>, <span class="ruby-identifier">day</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span>, <span class="ruby-identifier">time_zone_offset</span>)&#x000A;140:     <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">civil</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">month</span>, <span class="ruby-identifier">day</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span>, <span class="ruby-identifier">time_zone_offset</span>)&#x000A;141:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000006'>
+                <a name='M000006'></a>
+                <div class='synopsis'>
+                  <span class='name'>read</span>
+                  <span class='arguments'>(input)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Creates and returns a tag named &#8220;root&#8221; and add all the tags
+                  specified in the given <tt>input</tt>.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><tt>input</tt>:</td><td>String, IO, Pathname or URI.
+                  
+                  </td></tr>
+                  </table>
+                  <pre>root = SDL4R::read(&lt;&lt;EOF&#x000A;planets {&#x000A;  earth area_km2=510900000&#x000A;  mars&#x000A;}&#x000A;EOF&#x000A;)&#x000A;&#x000A;root = SDL4R::read(Pathname.new(&quot;my_dir/my_file.sdl&quot;))&#x000A;&#x000A;IO.open(&quot;my_dir/my_file.sdl&quot;, &quot;r&quot;) { |io|&#x000A;  root = SDL4R::read(io)&#x000A;}&#x000A;&#x000A;root = SDL4R::read(URI.new(&quot;http://my_site/my_file.sdl&quot;))</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000006-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000006-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 232</span>&#x000A;232:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">input</span>)&#x000A;233:     <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;root&quot;</span>).<span class="ruby-identifier">read</span>(<span class="ruby-identifier">input</span>)&#x000A;234:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000009'>
+                <a name='M000009'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_attribute_map</span>
+                  <span class='arguments'>(s)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Parse a string representing the attributes portion of an SDL tag and return
+                  the results as a map.
+                  </p>
+                  <p>
+                  Example
+                  </p>
+                  <pre>hash = SDL4R.to_attribute_hash(&quot;value=1 debugging=on time=12:24:01&quot;);&#x000A;&#x000A;# { &quot;value&quot; =&gt; 1, &quot;debugging&quot; =&gt; true, &quot;time&quot; =&gt; SdlTimeSpan.new(12, 24, 01) }</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000009-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 270</span>&#x000A;270:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_attribute_map</span>(<span class="ruby-identifier">s</span>)&#x000A;271:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;'s' cannot be null&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">nil?</span>&#x000A;272:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">read</span>(<span class="ruby-value str">&quot;atts &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>).<span class="ruby-identifier">child</span>.<span class="ruby-identifier">attributes</span>&#x000A;273:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000007'>
+                <a name='M000007'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_value</span>
+                  <span class='arguments'>(s)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Parses and returns the value corresponding with the specified SDL literal.
+                  </p>
+                  <pre>SDL4R.to_value(&quot;\&quot;abcd\&quot;&quot;) # =&gt; &quot;abcd&quot;&#x000A;SDL4R.to_value(&quot;1&quot;) # =&gt; 1&#x000A;SDL4R.to_value(&quot;null&quot;) # =&gt; nil</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000007-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 242</span>&#x000A;242:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_value</span>(<span class="ruby-identifier">s</span>)&#x000A;243:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;'s' cannot be null&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">nil?</span>&#x000A;244:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">s</span>).<span class="ruby-identifier">child</span>.<span class="ruby-identifier">value</span>&#x000A;245:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000008'>
+                <a name='M000008'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_value_array</span>
+                  <span class='arguments'>(s)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Parse the string of values and return a list. The string is handled as if
+                  it is the values portion of an SDL tag.
+                  </p>
+                  <p>
+                  Example
+                  </p>
+                  <pre>array = SDL4R.to_value_array(&quot;1 true 12:24:01&quot;)</pre>
+                  <p>
+                  Will return an int, a boolean, and a time span.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000008-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 256</span>&#x000A;256:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_value_array</span>(<span class="ruby-identifier">s</span>)&#x000A;257:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;'s' cannot be null&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">nil?</span>&#x000A;258:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">s</span>).<span class="ruby-identifier">child</span>.<span class="ruby-identifier">values</span>&#x000A;259:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-class' id='method-M000005'>
+                <a name='M000005'></a>
+                <div class='synopsis'>
+                  <span class='name'>validate_identifier</span>
+                  <span class='arguments'>(identifier)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Validates an SDL identifier String. SDL Identifiers must start with a
+                  Unicode letter or underscore (_) and contain only unicode letters, digits,
+                  underscores (_), dashes(-) and periods (.).
+                  </p>
+                  <h2>Raises</h2>
+                  <p>
+                  ArgumentError if the identifier is not legal
+                  </p>
+                  <p>
+                  TODO: support UTF-8 identifiers
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000005-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/sdl4r.rb, line 184</span>&#x000A;184:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">identifier</span>)&#x000A;185:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">empty?</span>&#x000A;186:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;SDL identifiers cannot be null or empty.&quot;</span>&#x000A;187:     <span class="ruby-keyword kw">end</span>&#x000A;188: &#x000A;189:     <span class="ruby-comment cmt"># in Java, was if(!Character.isJavaIdentifierStart(identifier.charAt(0)))</span>&#x000A;190:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">identifier</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[a-zA-Z_]/</span>&#x000A;191:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>,&#x000A;192:         <span class="ruby-value str">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">identifier</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>] <span class="ruby-operator">+</span>&#x000A;193:         <span class="ruby-value str">&quot;' is not a legal first character for an SDL identifier. &quot;</span> <span class="ruby-operator">+</span>&#x000A;194:         <span class="ruby-value str">&quot;SDL Identifiers must start with a unicode letter or &quot;</span> <span class="ruby-operator">+</span>&#x000A;195:         <span class="ruby-value str">&quot;an underscore (_).&quot;</span>&#x000A;196:     <span class="ruby-keyword kw">end</span>&#x000A;197:     &#x000A;198:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">identifier</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[a-zA-Z_][a-zA-Z_0-9\-\.]*$/</span>&#x000A;199:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">identifier</span>.<span class="ruby-identifier">length</span>&#x000A;200:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">identifier</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">..</span><span class="ruby-identifier">i</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[a-zA-Z_0-9\-]$/</span>&#x000A;201:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>,&#x000A;202:             <span class="ruby-value str">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">identifier</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">..</span><span class="ruby-identifier">i</span>] <span class="ruby-operator">+</span> &#x000A;203:             <span class="ruby-value str">&quot;' is not a legal character for an SDL identifier. &quot;</span> <span class="ruby-operator">+</span>&#x000A;204:             <span class="ruby-value str">&quot;SDL Identifiers must start with a unicode letter or &quot;</span> <span class="ruby-operator">+</span>&#x000A;205:             <span class="ruby-value str">&quot;underscore (_) followed by 0 or more unicode &quot;</span> <span class="ruby-operator">+</span>&#x000A;206:             <span class="ruby-value str">&quot;letters, digits, underscores (_), or dashes (-)&quot;</span>&#x000A;207:         <span class="ruby-keyword kw">end</span>&#x000A;208:       <span class="ruby-keyword kw">end</span>&#x000A;209:     <span class="ruby-keyword kw">end</span>&#x000A;210:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

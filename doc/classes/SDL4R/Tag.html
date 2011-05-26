@@ -1,0 +1,1249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: SDL4R::Tag [RDoc: Simple Declarative Language for Ruby]</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Class</span>
+          SDL4R::Tag
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../files/lib/sdl4r/tag_rb.html">lib/sdl4r/tag.rb</a>
+          </li>
+        </ol>
+        <div class='parent'>
+          Parent:
+          <strong>Object</strong>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            SDL documents are made of Tags.
+            </p>
+            <p>
+            See the <a href="../../files/README.html">README</a> for a longer
+            explanation on SDL documents.
+            </p>
+            <p>
+            Do not assume that methods returning sets (Hash, Array, etc) of
+            children/values/attributes/etc in this class returns copies or
+            implementations. It can be one or the other depending on the method. The
+            implementations are designed to be correct and somewhat efficient, not too
+            protect the <a href="Tag.html">Tag</a> internal state from ill-use of the
+            returned values.
+            </p>
+            <h2>Authors</h2>
+            <p>
+            Daniel Leuck, Philippe Vosges
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000038">new</a></li>
+            </ol>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000041">&lt;&lt;</a></li>
+              <li><a href="#M000077">==</a></li>
+              <li><a href="#M000040">add_child</a></li>
+              <li><a href="#M000054">add_value</a></li>
+              <li><a href="#M000061">attribute</a></li>
+              <li><a href="#M000063">attributes</a></li>
+              <li><a href="#M000067">attributes=</a></li>
+              <li><a href="#M000049">child</a></li>
+              <li><a href="#M000046">child_count</a></li>
+              <li><a href="#M000047">children</a></li>
+              <li><a href="#M000075">children_to_string</a></li>
+              <li><a href="#M000048">children_values</a></li>
+              <li><a href="#M000065">clear_attributes</a></li>
+              <li><a href="#M000043">clear_children</a></li>
+              <li><a href="#M000057">clear_values</a></li>
+              <li><a href="#M000076">eql?</a></li>
+              <li><a href="#M000062">has_attribute?</a></li>
+              <li><a href="#M000050">has_child?</a></li>
+              <li><a href="#M000051">has_children?</a></li>
+              <li><a href="#M000055">has_value?</a></li>
+              <li><a href="#M000078">hash</a></li>
+              <li><a href="#M000068">name=</a></li>
+              <li><a href="#M000069">namespace=</a></li>
+              <li><a href="#M000039">new_child</a></li>
+              <li><a href="#M000070">read</a></li>
+              <li><a href="#M000071">read_from_io</a></li>
+              <li><a href="#M000064">remove_attribute</a></li>
+              <li><a href="#M000042">remove_child</a></li>
+              <li><a href="#M000056">remove_value</a></li>
+              <li><a href="#M000060">set_attribute</a></li>
+              <li><a href="#M000066">set_attributes</a></li>
+              <li><a href="#M000052">to_child_hash</a></li>
+              <li><a href="#M000053">to_child_string_hash</a></li>
+              <li><a href="#M000073">to_s</a></li>
+              <li><a href="#M000074">to_string</a></li>
+              <li><a href="#M000079">to_xml_string</a></li>
+              <li><a href="#M000045">value</a></li>
+              <li><a href="#M000044">value=</a></li>
+              <li><a href="#M000058">values</a></li>
+              <li><a href="#M000059">values=</a></li>
+              <li><a href="#M000072">write</a></li>
+            </ol>
+            <h3>protected instance</h3>
+            <ol>
+              <li><a href="#M000080">_to_xml_string</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='attribute-list'>
+              <h2 class='section-bar'>Attributes</h2>
+              <div class='name-list'>
+                <table>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>name</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      the name of this <a href="Tag.html">Tag</a>
+                    </td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>namespace</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'>
+                      
+                      the namespace of this <a href="Tag.html">Tag</a> or an empty string when
+                      there is no namespace (i.e. default namespace).
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000038'>
+                <a name='M000038'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>(namespace, name = nil, &amp;block)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Creates an empty tag in the given namespace. If the <tt>namespace</tt> is
+                  nil it will be coerced to an empty String.
+                  </p>
+                  <pre>tag = Tag.new(&quot;name&quot;)&#x000A;tag = Tag.new(&quot;namespace&quot;, &quot;name&quot;)&#x000A;&#x000A;tag = Tag.new(&quot;fruit&quot;) do&#x000A;  add_value 2&#x000A;  new_child(&quot;orange&quot;) do&#x000A;    set_attribute(&quot;quantity&quot;, 2)&#x000A;  end&#x000A;end</pre>
+                  <p>
+                  which builds the following SDL structure
+                  </p>
+                  <pre>fruit 2 {&#x000A;  orange quantity=2&#x000A;}</pre>
+                  <p>
+                  If you provide a block that takes an argument, you will write the same
+                  example, as follows:
+                  </p>
+                  <pre>tag = Tag.new(&quot;fruit&quot;) do |t|&#x000A;  t.add_value 2&#x000A;  t.new_child(&quot;orange&quot;) do&#x000A;    set_attribute(&quot;quantity&quot;, 2)&#x000A;  end&#x000A;end</pre>
+                  <p>
+                  In this case, the current context is not the new <a href="Tag.html">Tag</a>
+                  anymore but the context of your code.
+                  </p>
+                  <h3>Raises</h3>
+                  <p>
+                  ArgumentError if the name is not a legal SDL identifier (see <a
+                  href="../SDL4R.html#M000005">SDL4R#validate_identifier</a>) or the
+                  namespace is non-blank and is not a legal SDL identifier.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000038-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000038-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 106</span>&#x000A;106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;107:       <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span> = <span class="ruby-identifier">to_nns</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>&#x000A;108: &#x000A;109:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;tag namespace must be a String&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;110:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;tag name must be a String&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;111: &#x000A;112:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">namespace</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;113:       <span class="ruby-ivar">@namespace</span> = <span class="ruby-identifier">namespace</span>&#x000A;114:       &#x000A;115:       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">strip</span>&#x000A;116:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Tag name cannot be nil or empty&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">empty?</span>&#x000A;117:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">name</span>)&#x000A;118:       <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>&#x000A;119:       &#x000A;120:       <span class="ruby-ivar">@children</span> = []&#x000A;121:       <span class="ruby-ivar">@values</span> = []&#x000A;122:       &#x000A;123:       <span class="ruby-comment cmt"># a Hash of Hash : {namespace =&gt; {name =&gt; value}}</span>&#x000A;124:       <span class="ruby-comment cmt"># The default namespace is represented by an empty string.</span>&#x000A;125:       <span class="ruby-ivar">@attributesByNamespace</span> = {}&#x000A;126: &#x000A;127:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;128:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>&#x000A;129:           <span class="ruby-identifier">block</span>[<span class="ruby-keyword kw">self</span>]&#x000A;130:         <span class="ruby-keyword kw">else</span>&#x000A;131:           <span class="ruby-identifier">instance_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;132:         <span class="ruby-keyword kw">end</span>&#x000A;133:       <span class="ruby-keyword kw">end</span>&#x000A;134:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Public instance methods</h2>
+              <div class='method public-instance' id='method-M000041'>
+                <a name='M000041'></a>
+                <div class='synopsis'>
+                  <span class='name'>&lt;&lt;</span>
+                  <span class='arguments'>(o)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Adds the given object as a child if it is a <tt>Tag</tt>, as an attribute
+                  if it is a Hash {key => value} (supports namespaces), or as a value
+                  otherwise. If it is an Enumerable (e.g. Array), each of its elements is
+                  added to this <a href="Tag.html">Tag</a> via this operator. If any of its
+                  elements is itself an Enumerable, then an anonymous tag is created and the
+                  Enumerable is passed to it via this operator (see the examples below).
+                  </p>
+                  <pre>tag &lt;&lt; Tag.new(&quot;child&quot;)&#x000A;tag &lt;&lt; 123                          # new integer value&#x000A;tag &lt;&lt; &quot;islamabad&quot;                  # new string value&#x000A;tag &lt;&lt; { &quot;metric:length&quot; =&gt; 1027 }  # new attribute (with namespace)&#x000A;tag &lt;&lt; [nil, 456, &quot;abc&quot;]            # several values added&#x000A;&#x000A;tag = Tag.new(&quot;tag&quot;)&#x000A;tag &lt;&lt; [[1, 2, 3], [4, 5, 6]]       # tag {&#x000A;                                    #   1 2 3&#x000A;                                    #   4 5 6&#x000A;                                    # }</pre>
+                  <p>
+                  Of course, despite the fact that String is an Enumerable, it is considered
+                  as the type of values.
+                  </p>
+                  <p>
+                  Returns <tt>self</tt>.
+                  </p>
+                  <p>
+                  Use other accessors (<a href="Tag.html#M000040">add_child</a>, <a
+                  href="Tag.html#M000054">add_value</a>, <a
+                  href="Tag.html#M000063">attributes</a>, etc) for a stricter and less
+                  &#8220;magical&#8221; behavior.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000041-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000041-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 198</span>&#x000A;198:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">o</span>)&#x000A;199:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Tag</span>)&#x000A;200:         <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">o</span>)&#x000A;201:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)&#x000A;202:         <span class="ruby-identifier">o</span>.<span class="ruby-identifier">each_pair</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>&#x000A;203:           <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/:/</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/:/</span>)&#x000A;204:           <span class="ruby-identifier">namespace</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;&quot;</span>&#x000A;205:           <span class="ruby-identifier">set_attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)&#x000A;206:         }&#x000A;207:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;208:         <span class="ruby-identifier">add_value</span>(<span class="ruby-identifier">o</span>)&#x000A;209:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Enumerable</span>&#x000A;210:         <span class="ruby-identifier">o</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>&#x000A;211:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Enumerable</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;212:             <span class="ruby-identifier">anonymous</span> = <span class="ruby-identifier">new_child</span>(<span class="ruby-value str">&quot;content&quot;</span>)&#x000A;213:             <span class="ruby-identifier">anonymous</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>&#x000A;214:           <span class="ruby-keyword kw">else</span>&#x000A;215:             <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>&#x000A;216:           <span class="ruby-keyword kw">end</span>&#x000A;217:         }&#x000A;218:       <span class="ruby-keyword kw">else</span>&#x000A;219:         <span class="ruby-identifier">add_value</span>(<span class="ruby-identifier">o</span>)&#x000A;220:       <span class="ruby-keyword kw">end</span>&#x000A;221:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>&#x000A;222:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000077'>
+                <a name='M000077'></a>
+                <div class='synopsis'>
+                  <span class='name'>==</span>
+                  <span class='arguments'>(o)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Alias for <a href="Tag.html#M000076">eql?</a>
+                  </p>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000040'>
+                <a name='M000040'></a>
+                <div class='synopsis'>
+                  <span class='name'>add_child</span>
+                  <span class='arguments'>(child)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Add a child to this <a href="Tag.html">Tag</a>.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>child</em>:</td><td>The child to add
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Returns the added child.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000040-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000040-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 167</span>&#x000A;167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">child</span>)&#x000A;168:       <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">child</span>)&#x000A;169:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">child</span>&#x000A;170:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000054'>
+                <a name='M000054'></a>
+                <div class='synopsis'>
+                  <span class='name'>add_value</span>
+                  <span class='arguments'>(v)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Adds a value to this <a href="Tag.html">Tag</a>. See <a
+                  href="../SDL4R.html#M000004">SDL4R#coerce_or_fail</a> to know about the
+                  allowable types.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>v</em>:</td><td>The value to add
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Raises an <tt>ArgumentError</tt> if the value is not a legal SDL type
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000054-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000054-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 440</span>&#x000A;440:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_value</span>(<span class="ruby-identifier">v</span>)&#x000A;441:       <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">SDL4R</span><span class="ruby-operator">::</span><span class="ruby-identifier">coerce_or_fail</span>(<span class="ruby-identifier">v</span>))&#x000A;442:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>&#x000A;443:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000061'>
+                <a name='M000061'></a>
+                <div class='synopsis'>
+                  <span class='name'>attribute</span>
+                  <span class='arguments'>(namespace, key = nil)</span>
+                </div>
+                <div class='description'>
+                  <pre>attribute(key)&#x000A;attribute(namespace, key)</pre>
+                  <p>
+                  Returns the attribute of the specified <tt>namespace</tt> of specified
+                  <tt>key</tt> or <tt>nil</tt> if not found.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000061-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000061-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 546</span>&#x000A;546:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;547:       <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">to_nns</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>&#x000A;548:       <span class="ruby-identifier">attributes</span> = <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;549:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">key</span>]&#x000A;550:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000063'>
+                <a name='M000063'></a>
+                <div class='synopsis'>
+                  <span class='name'>attributes</span>
+                  <span class='arguments'>(namespace = nil) {|namespace, key, value| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a Hash of the attributes of the specified <tt>namespace</tt>
+                  (default is all) or enumerates them.
+                  </p>
+                  <pre>tag.attributes # =&gt; { &quot;length&quot; =&gt; 123, &quot;width&quot; = 25.4, &quot;orig:color&quot; =&gt; &quot;gray&quot; }&#x000A;tag.attributes(&quot;orig&quot;) do |namespace, key, value|&#x000A;  p &quot;#{namespace}:#{key} = #{value}&quot;&#x000A;end</pre>
+                  <p>
+                  <em>namespace</em>:: namespace of the returned attributes. If nil, all
+                  attributes are returned with qualified names (e.g.
+                  &#8220;meat:color&#8221;). If &#8220;&#8221;, attributes of the default
+                  namespace are returned.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000063-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000063-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 584</span>&#x000A;584:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attributes</span>(<span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment cmt"># :yields: namespace, key, value</span>&#x000A;585:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;586:         <span class="ruby-identifier">each_attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;587:         &#x000A;588:       <span class="ruby-keyword kw">else</span>&#x000A;589:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">nil?</span>&#x000A;590:           <span class="ruby-identifier">hash</span> = {}&#x000A;591: &#x000A;592:           <span class="ruby-identifier">each_attribute</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span>&#x000A;593:             <span class="ruby-identifier">qualified_name</span> = <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-value">? </span><span class="ruby-identifier">key</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">namespace</span> <span class="ruby-operator">+</span> <span class="ruby-value str">':'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">key</span>&#x000A;594:             <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">qualified_name</span>] = <span class="ruby-identifier">value</span>&#x000A;595:           <span class="ruby-keyword kw">end</span>&#x000A;596: &#x000A;597:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">hash</span>&#x000A;598: &#x000A;599:         <span class="ruby-keyword kw">else</span>&#x000A;600:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;601:         <span class="ruby-keyword kw">end</span>&#x000A;602:       <span class="ruby-keyword kw">end</span>&#x000A;603:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000067'>
+                <a name='M000067'></a>
+                <div class='synopsis'>
+                  <span class='name'>attributes=</span>
+                  <span class='arguments'>(attribute_hash)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Sets all the attributes of the default namespace for this <a
+                  href="Tag.html">Tag</a> in one operation.
+                  </p>
+                  <p>
+                  See <a href="Tag.html#M000066">set_attributes</a>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000067-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000067-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 687</span>&#x000A;687:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attributes=</span>(<span class="ruby-identifier">attribute_hash</span>)&#x000A;688:       <span class="ruby-identifier">set_attributes</span>(<span class="ruby-identifier">attribute_hash</span>)&#x000A;689:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000049'>
+                <a name='M000049'></a>
+                <div class='synopsis'>
+                  <span class='name'>child</span>
+                  <span class='arguments'>(recursive = false, name = nil)</span>
+                </div>
+                <div class='description'>
+                  <pre>child&#x000A;child(name)&#x000A;child(recursive, name)</pre>
+                  <p>
+                  Get the first child with the given name, optionally using a recursive
+                  search.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>name</em>:</td><td>the name of the child <a href="Tag.html">Tag</a>. If <tt>nil</tt>, the
+                  first child is returned (<tt>nil</tt> if there are
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  no children at all).
+                  </p>
+                  <p>
+                  Returns the first child tag having the given name or <tt>nil</tt> if no
+                  such child exists
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000049-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000049-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 344</span>&#x000A;344:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">child</span>(<span class="ruby-identifier">recursive</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;345:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>&#x000A;346:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">recursive</span>&#x000A;347:         <span class="ruby-identifier">recursive</span> = <span class="ruby-keyword kw">false</span>&#x000A;348:       <span class="ruby-keyword kw">end</span>&#x000A;349:       &#x000A;350:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">name</span>&#x000A;351:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">first</span>&#x000A;352:       <span class="ruby-keyword kw">else</span>&#x000A;353:         <span class="ruby-identifier">each_child</span>(<span class="ruby-identifier">recursive</span>, <span class="ruby-identifier">name</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">child</span> }&#x000A;354:       <span class="ruby-keyword kw">end</span>&#x000A;355:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000046'>
+                <a name='M000046'></a>
+                <div class='synopsis'>
+                  <span class='name'>child_count</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns the number of children <a href="Tag.html">Tag</a>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000046-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000046-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 265</span>&#x000A;265:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">child_count</span>&#x000A;266:       <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">size</span>&#x000A;267:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000047'>
+                <a name='M000047'></a>
+                <div class='synopsis'>
+                  <span class='name'>children</span>
+                  <span class='arguments'>(recursive = false, namespace = nil, name = :DEFAULT) {|child| ...}</span>
+                </div>
+                <div class='description'>
+                  <pre>children(recursive)&#x000A;children(recursive, name)&#x000A;children(recursive, namespace, name)&#x000A;&#x000A;children(recursive) { |child| ... }&#x000A;children(recursive, name) { |child| ... }&#x000A;children(recursive, namespace, name) { |child| ... }</pre>
+                  <p>
+                  Returns an Array of the children Tags of this <a href="Tag.html">Tag</a> or
+                  enumerates them.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>recursive</em>:</td><td>if true children and all descendants will be returned. False by default.
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>name</em>:</td><td>if not nil, only children having this name will be returned. Nil by
+                  default.
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>namespace</em>:</td><td>use nil for all namespaces and &#8220;&#8221; for the default one. Nil by
+                  default.
+                  
+                  </td></tr>
+                  </table>
+                  <pre>tag.children # =&gt; array of the children&#x000A;tag.children(true) { |descendant| ... }&#x000A;&#x000A;tag.children(false, &quot;name&quot;) # =&gt; children of name &quot;name&quot;&#x000A;tag.children(false, &quot;ns&quot;, nil) # =&gt; children of namespace &quot;ns&quot;</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000047-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000047-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 289</span>&#x000A;289:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">children</span>(<span class="ruby-identifier">recursive</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">name</span> = <span class="ruby-identifier">:DEFAULT</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment cmt"># :yields: child</span>&#x000A;290:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:DEFAULT</span>&#x000A;291:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">namespace</span>&#x000A;292:         <span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>&#x000A;293:       <span class="ruby-keyword kw">end</span>&#x000A;294: &#x000A;295:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;296:         <span class="ruby-identifier">each_child</span>(<span class="ruby-identifier">recursive</span>, <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;297:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>&#x000A;298:         &#x000A;299:       <span class="ruby-keyword kw">else</span>&#x000A;300:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">recursive</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">namespace</span>&#x000A;301:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@children</span>&#x000A;302:           &#x000A;303:         <span class="ruby-keyword kw">else</span>&#x000A;304:           <span class="ruby-identifier">result</span> = []&#x000A;305:           <span class="ruby-identifier">each_child</span>(<span class="ruby-identifier">recursive</span>, <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">name</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;306:             <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>&#x000A;307:           }&#x000A;308:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>&#x000A;309:         <span class="ruby-keyword kw">end</span>&#x000A;310:       <span class="ruby-keyword kw">end</span>&#x000A;311:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000075'>
+                <a name='M000075'></a>
+                <div class='synopsis'>
+                  <span class='name'>children_to_string</span>
+                  <span class='arguments'>(line_prefix = &quot;&quot;, s = &quot;&quot;)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a string representation of the children tags.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>linePrefix</em>:</td><td>A prefix to insert before every line.
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>s</em>:</td><td>a String that receives the string representation
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  TODO: break up long lines using the backslash
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000075-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000075-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 858</span>&#x000A;858:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">children_to_string</span>(<span class="ruby-identifier">line_prefix</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">s</span> = <span class="ruby-value str">&quot;&quot;</span>)&#x000A;859:       <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;860:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">to_string</span>(<span class="ruby-identifier">line_prefix</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">$/</span>&#x000A;861:       <span class="ruby-keyword kw">end</span>&#x000A;862:       &#x000A;863:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>&#x000A;864:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000048'>
+                <a name='M000048'></a>
+                <div class='synopsis'>
+                  <span class='name'>children_values</span>
+                  <span class='arguments'>(name = nil)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns the values of all the children with the given <tt>name</tt>. If the
+                  child has more than one value, all the values will be added as an array. If
+                  the child has no value, <tt>nil</tt> will be added. The search is not
+                  recursive.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>name</em>:</td><td>if nil, all children are considered (nil by default).
+                  
+                  </td></tr>
+                  </table>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000048-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000048-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 318</span>&#x000A;318:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">children_values</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;319:       <span class="ruby-identifier">children_values</span> = []&#x000A;320:       <span class="ruby-identifier">each_child</span>(<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">name</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;321:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">size</span>&#x000A;322:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">0</span>&#x000A;323:           <span class="ruby-identifier">children_values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">nil</span>&#x000A;324:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span>&#x000A;325:           <span class="ruby-identifier">children_values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">value</span>&#x000A;326:         <span class="ruby-keyword kw">else</span>&#x000A;327:           <span class="ruby-identifier">children_values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">values</span>&#x000A;328:         <span class="ruby-keyword kw">end</span>&#x000A;329:       }&#x000A;330:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">children_values</span>&#x000A;331:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000065'>
+                <a name='M000065'></a>
+                <div class='synopsis'>
+                  <span class='name'>clear_attributes</span>
+                  <span class='arguments'>(namespace = nil)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Clears the attributes of the specified namespace or all the attributes if
+                  <tt>namespace</tt> is <tt>nil</tt>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000065-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000065-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 624</span>&#x000A;624:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_attributes</span>(<span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;625:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">nil?</span>&#x000A;626:         <span class="ruby-ivar">@attributesByNamespace</span>.<span class="ruby-identifier">clear</span>&#x000A;627:       <span class="ruby-keyword kw">else</span>&#x000A;628:         <span class="ruby-ivar">@attributesByNamespace</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">namespace</span>)&#x000A;629:       <span class="ruby-keyword kw">end</span>&#x000A;630:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000043'>
+                <a name='M000043'></a>
+                <div class='synopsis'>
+                  <span class='name'>clear_children</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Removes all children.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000043-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000043-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 236</span>&#x000A;236:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_children</span>&#x000A;237:       <span class="ruby-ivar">@children</span> = []&#x000A;238:       <span class="ruby-keyword kw">nil</span>&#x000A;239:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000057'>
+                <a name='M000057'></a>
+                <div class='synopsis'>
+                  <span class='name'>clear_values</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Removes all values.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000057-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000057-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 468</span>&#x000A;468:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_values</span>&#x000A;469:       <span class="ruby-ivar">@values</span> = []&#x000A;470:       <span class="ruby-keyword kw">nil</span>&#x000A;471:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000076'>
+                <a name='M000076'></a>
+                <div class='synopsis'>
+                  <span class='name'>eql?</span>
+                  <span class='arguments'>(o)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns true if this tag (including all of its values, attributes, and
+                  children) is equivalent to the given tag.
+                  </p>
+                  <p>
+                  Returns true if the tags are equivalet
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000076-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000076-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 871</span>&#x000A;871:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">o</span>)&#x000A;872:       <span class="ruby-comment cmt"># this is safe because to_string() dumps the full state</span>&#x000A;873:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Tag</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_string</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">to_string</span>;&#x000A;874:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000062'>
+                <a name='M000062'></a>
+                <div class='synopsis'>
+                  <span class='name'>has_attribute?</span>
+                  <span class='arguments'>(namespace = nil, key = nil)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Indicates whether there is at least an attribute in this <a
+                  href="Tag.html">Tag</a>.
+                  </p>
+                  <pre>has_attribute?</pre>
+                  <p>
+                  Indicates whether there is the specified attribute exists in this <a
+                  href="Tag.html">Tag</a>.
+                  </p>
+                  <pre>has_attribute?(key)&#x000A;has_attribute?(namespace, key)</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000062-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000062-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 559</span>&#x000A;559:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_attribute?</span>(<span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">key</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;560:       <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">to_nns</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>&#x000A;561: &#x000A;562:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">key</span>&#x000A;563:         <span class="ruby-identifier">attributes</span> = <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;564:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)&#x000A;565: &#x000A;566:       <span class="ruby-keyword kw">else</span>&#x000A;567:         <span class="ruby-identifier">attributes</span> { <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> }&#x000A;568:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>&#x000A;569:       <span class="ruby-keyword kw">end</span>&#x000A;570:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000050'>
+                <a name='M000050'></a>
+                <div class='synopsis'>
+                  <span class='name'>has_child?</span>
+                  <span class='arguments'>(name)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Indicates whether the child <a href="Tag.html">Tag</a> of given name
+                  exists.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>name</em>:</td><td>name of the searched child <a href="Tag.html">Tag</a>
+                  
+                  </td></tr>
+                  </table>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000050-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000050-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 361</span>&#x000A;361:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_child?</span>(<span class="ruby-identifier">name</span>)&#x000A;362:       <span class="ruby-operator">!</span><span class="ruby-identifier">child</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">nil?</span>&#x000A;363:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000051'>
+                <a name='M000051'></a>
+                <div class='synopsis'>
+                  <span class='name'>has_children?</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Indicates whether there are children <a href="Tag.html">Tag</a>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000051-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000051-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 367</span>&#x000A;367:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_children?</span>&#x000A;368:       <span class="ruby-operator">!</span><span class="ruby-ivar">@children</span>.<span class="ruby-identifier">empty?</span>&#x000A;369:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000055'>
+                <a name='M000055'></a>
+                <div class='synopsis'>
+                  <span class='name'>has_value?</span>
+                  <span class='arguments'>(v)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns true if <tt>v</tt> is a value of this Tag&#8217;s.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000055-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000055-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 447</span>&#x000A;447:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>)&#x000A;448:       <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">v</span>)&#x000A;449:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000078'>
+                <a name='M000078'></a>
+                <div class='synopsis'>
+                  <span class='name'>hash</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns The hash (based on the output from toString())
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000078-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000078-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 879</span>&#x000A;879:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>&#x000A;880:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">to_string</span>.<span class="ruby-identifier">hash</span>&#x000A;881:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000068'>
+                <a name='M000068'></a>
+                <div class='synopsis'>
+                  <span class='name'>name=</span>
+                  <span class='arguments'>(a_name)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Sets the name of this <a href="Tag.html">Tag</a>.
+                  </p>
+                  <p>
+                  Raises <tt>ArgumentError</tt> if the name is not a legal SDL identifier
+                  (see <a href="../SDL4R.html#M000005">SDL4R#validate_identifier</a>).
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000068-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000068-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 696</span>&#x000A;696:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name=</span>(<span class="ruby-identifier">a_name</span>)&#x000A;697:       <span class="ruby-identifier">a_name</span> = <span class="ruby-identifier">a_name</span>.<span class="ruby-identifier">to_s</span>&#x000A;698:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">a_name</span>)&#x000A;699:       <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">a_name</span>&#x000A;700:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000069'>
+                <a name='M000069'></a>
+                <div class='synopsis'>
+                  <span class='name'>namespace=</span>
+                  <span class='arguments'>(a_namespace)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  The namespace to set. <tt>nil</tt> will be coerced to the empty string.
+                  </p>
+                  <p>
+                  Raises <tt>ArgumentError</tt> if the namespace is non-blank and is not a
+                  legal SDL identifier (see <a
+                  href="../SDL4R.html#M000005">SDL4R#validate_identifier</a>)
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000069-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000069-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 707</span>&#x000A;707:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">namespace=</span>(<span class="ruby-identifier">a_namespace</span>)&#x000A;708:       <span class="ruby-identifier">a_namespace</span> = <span class="ruby-identifier">a_namespace</span>.<span class="ruby-identifier">to_s</span>&#x000A;709:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">a_namespace</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">a_namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;710:       <span class="ruby-ivar">@namespace</span> = <span class="ruby-identifier">a_namespace</span>&#x000A;711:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000039'>
+                <a name='M000039'></a>
+                <div class='synopsis'>
+                  <span class='name'>new_child</span>
+                  <span class='arguments'>(*args, &amp;block)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Creates a new child tag. Can take a block so that you can write something
+                  like:
+                  </p>
+                  <pre>car = Tag.new(&quot;car&quot;) do&#x000A;  new_child(&quot;wheels&quot;) do&#x000A;    self &lt;&lt; 4&#x000A;  end&#x000A;end</pre>
+                  <p>
+                  The context of execution of the given block is the child instance. If you
+                  provide a block that takes a parameter (see below), the context is the
+                  context of your code:
+                  </p>
+                  <pre>car = Tag.new(&quot;car&quot;) do |child|&#x000A;  child.new_child(&quot;wheels&quot;) do |grandchild|&#x000A;    grandchild &lt;&lt; 4&#x000A;  end&#x000A;end</pre>
+                  <p>
+                  Returns the created child <a href="Tag.html">Tag</a>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000039-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000039-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 157</span>&#x000A;157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_child</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;158:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">add_child</span> <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;159:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000070'>
+                <a name='M000070'></a>
+                <div class='synopsis'>
+                  <span class='name'>read</span>
+                  <span class='arguments'>(input)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Adds all the tags specified in the given IO, String, Pathname or URI to
+                  this <a href="Tag.html">Tag</a>.
+                  </p>
+                  <p>
+                  Returns this <a href="Tag.html">Tag</a> after adding all the children read
+                  from <tt>input</tt>.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000070-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000070-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 717</span>&#x000A;717:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">input</span>)&#x000A;718:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;719:         <span class="ruby-identifier">read_from_io</span>(<span class="ruby-keyword kw">true</span>) { <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input</span>) }&#x000A;720: &#x000A;721:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Pathname</span>&#x000A;722:         <span class="ruby-identifier">read_from_io</span>(<span class="ruby-keyword kw">true</span>) { <span class="ruby-identifier">input</span>.<span class="ruby-identifier">open</span>(<span class="ruby-value str">&quot;r:UTF-8&quot;</span>) }&#x000A;723: &#x000A;724:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">URI</span>&#x000A;725:         <span class="ruby-identifier">read_from_io</span>(<span class="ruby-keyword kw">true</span>) { <span class="ruby-identifier">input</span>.<span class="ruby-identifier">open</span> }&#x000A;726: &#x000A;727:       <span class="ruby-keyword kw">else</span>&#x000A;728:         <span class="ruby-identifier">read_from_io</span>(<span class="ruby-keyword kw">false</span>) { <span class="ruby-identifier">input</span> }&#x000A;729:       <span class="ruby-keyword kw">end</span>&#x000A;730:       &#x000A;731:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>&#x000A;732:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000071'>
+                <a name='M000071'></a>
+                <div class='synopsis'>
+                  <span class='name'>read_from_io</span>
+                  <span class='arguments'>(close_io) {|| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Reads and parses the <tt>io</tt> returned by the specified block and closes
+                  this <tt>io</tt> if <tt>close_io</tt> is true.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000071-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000071-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 736</span>&#x000A;736:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_from_io</span>(<span class="ruby-identifier">close_io</span>)&#x000A;737:       <span class="ruby-identifier">io</span> = <span class="ruby-keyword kw">yield</span>&#x000A;738: &#x000A;739:       <span class="ruby-keyword kw">begin</span>&#x000A;740:         <span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">io</span>).<span class="ruby-identifier">parse</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span>&#x000A;741:           <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">tag</span>)&#x000A;742:         <span class="ruby-keyword kw">end</span>&#x000A;743: &#x000A;744:       <span class="ruby-keyword kw">ensure</span>&#x000A;745:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">close_io</span>&#x000A;746:           <span class="ruby-identifier">io</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">IOError</span>&#x000A;747:         <span class="ruby-keyword kw">end</span>&#x000A;748:       <span class="ruby-keyword kw">end</span>&#x000A;749:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000064'>
+                <a name='M000064'></a>
+                <div class='synopsis'>
+                  <span class='name'>remove_attribute</span>
+                  <span class='arguments'>(namespace, key = nil)</span>
+                </div>
+                <div class='description'>
+                  <pre>remove_attribute(key)&#x000A;remove_attribute(namespace, key)</pre>
+                  <p>
+                  Removes the attribute, whose name and namespace are specified.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>key</em>:</td><td>name of the removed atribute
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>namespace</em>:</td><td>namespace of the removed attribute (equal to &#8220;&#8221;, default
+                  namespace, by default)
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Returns the value of the removed attribute or <tt>nil</tt> if it
+                  didn&#8217;t exist.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000064-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000064-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 615</span>&#x000A;615:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;616:       <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">to_nns</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>&#x000A;617:       <span class="ruby-identifier">attributes</span> = <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;618:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)&#x000A;619:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000042'>
+                <a name='M000042'></a>
+                <div class='synopsis'>
+                  <span class='name'>remove_child</span>
+                  <span class='arguments'>(child)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Remove a child from this <a href="Tag.html">Tag</a>
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>child</em>:</td><td>the child to remove
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Returns true if the child exists and is removed
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000042-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000042-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 230</span>&#x000A;230:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_child</span>(<span class="ruby-identifier">child</span>)&#x000A;231:       <span class="ruby-keyword kw">return</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">child</span>).<span class="ruby-identifier">nil?</span>&#x000A;232:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000056'>
+                <a name='M000056'></a>
+                <div class='synopsis'>
+                  <span class='name'>remove_value</span>
+                  <span class='arguments'>(v)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Removes the first occurence of the specified value from this <a
+                  href="Tag.html">Tag</a>.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>v</em>:</td><td>The value to remove
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Returns true If the value exists and is removed
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000056-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000056-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 457</span>&#x000A;457:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_value</span>(<span class="ruby-identifier">v</span>)&#x000A;458:       <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">v</span>)&#x000A;459:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index</span>&#x000A;460:         <span class="ruby-keyword kw">return</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@values</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">index</span>).<span class="ruby-identifier">nil?</span>&#x000A;461:       <span class="ruby-keyword kw">else</span>&#x000A;462:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>&#x000A;463:       <span class="ruby-keyword kw">end</span>&#x000A;464:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000060'>
+                <a name='M000060'></a>
+                <div class='synopsis'>
+                  <span class='name'>set_attribute</span>
+                  <span class='arguments'>(namespace, key, value = :default)</span>
+                </div>
+                <div class='description'>
+                  <pre>set_attribute(key, value)&#x000A;set_attribute(namespace, key, value)</pre>
+                  <p>
+                  Set an attribute in the given namespace for this tag. The allowable
+                  attribute value types are the same as those allowed for <a
+                  href="Tag.html#M000054">add_value</a>.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>namespace</em>:</td><td>The namespace for this attribute
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>key</em>:</td><td>The attribute key
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>value</em>:</td><td>The attribute value
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Raises <tt>ArgumentError</tt> if the key is not a legal SDL identifier (see
+                  <a href="../SDL4R.html#M000005">SDL4R#validate_identifier</a>), or the
+                  namespace is non-blank and is not a legal SDL identifier, or thevalue is
+                  not a legal SDL type
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000060-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000060-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 516</span>&#x000A;516:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">:default</span>)&#x000A;517:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:default</span>&#x000A;518:         <span class="ruby-identifier">value</span> = <span class="ruby-identifier">key</span>&#x000A;519:         <span class="ruby-identifier">key</span> = <span class="ruby-identifier">namespace</span>&#x000A;520:         <span class="ruby-identifier">namespace</span> = <span class="ruby-value str">&quot;&quot;</span>&#x000A;521:       <span class="ruby-keyword kw">end</span>&#x000A;522: &#x000A;523:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;attribute namespace must be a String&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;524:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;attribute key must be a String&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;525:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;attribute key cannot be empty&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">empty?</span>&#x000A;526: &#x000A;527:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">namespace</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;528:       <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">validate_identifier</span>(<span class="ruby-identifier">key</span>)&#x000A;529: &#x000A;530:       <span class="ruby-identifier">attributes</span> = <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;531:       &#x000A;532:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span>&#x000A;533:         <span class="ruby-identifier">attributes</span> = {}&#x000A;534:         <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>] = <span class="ruby-identifier">attributes</span>&#x000A;535:       <span class="ruby-keyword kw">end</span>&#x000A;536:       &#x000A;537:       <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">coerce_or_fail</span>(<span class="ruby-identifier">value</span>)&#x000A;538:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000066'>
+                <a name='M000066'></a>
+                <div class='synopsis'>
+                  <span class='name'>set_attributes</span>
+                  <span class='arguments'>(namespace, attribute_hash = nil)</span>
+                </div>
+                <div class='description'>
+                  <pre>set_attributes(attribute_hash)&#x000A;set_attributes(namespace, attribute_hash)</pre>
+                  <p>
+                  Sets the attributes specified by a Hash in the given <tt>namespace</tt> in
+                  one operation. The previous attributes of the specified <tt>namespace</tt>
+                  are removed. See <a href="Tag.html#M000060">set_attribute</a> for allowable
+                  attribute value types.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>attributes</em>:</td><td>a Hash where keys are attribute keys
+                  
+                  </td></tr>
+                  <tr><td valign="top"><em>namespace</em>:</td><td>&#8220;&#8221; (default namespace) by default
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Raises an <tt>ArgumentError</tt> if any key in the map is not a legal SDL
+                  identifier (see <a
+                  href="../SDL4R.html#M000005">SDL4R#validate_identifier</a>), or any value
+                  is not a legal SDL type.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000066-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000066-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 664</span>&#x000A;664:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_attributes</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">attribute_hash</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;665:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_hash</span>.<span class="ruby-identifier">nil?</span>&#x000A;666:         <span class="ruby-identifier">attribute_hash</span> = <span class="ruby-identifier">namespace</span>&#x000A;667:         <span class="ruby-identifier">namespace</span> = <span class="ruby-value str">&quot;&quot;</span>&#x000A;668:       <span class="ruby-keyword kw">end</span>&#x000A;669:       &#x000A;670:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;namespace can't be nil&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">nil?</span>&#x000A;671:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;attribute_hash should be a Hash&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">attribute_hash</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>&#x000A;672: &#x000A;673:       <span class="ruby-identifier">namespace_attributes</span> = <span class="ruby-ivar">@attributesByNamespace</span>[<span class="ruby-identifier">namespace</span>]&#x000A;674:       <span class="ruby-identifier">namespace_attributes</span>.<span class="ruby-identifier">clear</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace_attributes</span>&#x000A;675:       &#x000A;676:       <span class="ruby-identifier">attribute_hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>&#x000A;677:           <span class="ruby-comment cmt"># Calling set_attribute() is required to ensure validations</span>&#x000A;678:           <span class="ruby-identifier">set_attribute</span>(<span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)&#x000A;679:       <span class="ruby-keyword kw">end</span>&#x000A;680:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000052'>
+                <a name='M000052'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_child_hash</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a new Hash where the children&#8217;s names as keys and their
+                  values as the key&#8217;s value. Example:
+                  </p>
+                  <pre>child1 &quot;toto&quot;&#x000A;child2 2</pre>
+                  <p>
+                  would give
+                  </p>
+                  <pre>{ &quot;child1&quot; =&gt; &quot;toto&quot;, &quot;child2&quot; =&gt; 2 }</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000052-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000052-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 406</span>&#x000A;406:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_child_hash</span>&#x000A;407:       <span class="ruby-identifier">hash</span> = {}&#x000A;408:       <span class="ruby-identifier">children</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">value</span> }&#x000A;409:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">hash</span>&#x000A;410:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000053'>
+                <a name='M000053'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_child_string_hash</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a new Hash where the children&#8217;s names as keys and their
+                  values as the key&#8217;s value. Values are converted to Strings.
+                  <tt>nil</tt> values become empty Strings. Example:
+                  </p>
+                  <pre>child1 &quot;toto&quot;&#x000A;child2 2&#x000A;child3 null</pre>
+                  <p>
+                  would give
+                  </p>
+                  <pre>{ &quot;child1&quot; =&gt; &quot;toto&quot;, &quot;child2&quot; =&gt; &quot;2&quot;, &quot;child3&quot; =&gt; &quot;&quot; }</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000053-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000053-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 424</span>&#x000A;424:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_child_string_hash</span>&#x000A;425:       <span class="ruby-identifier">hash</span> = {}&#x000A;426:       <span class="ruby-identifier">children</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;427:         <span class="ruby-comment cmt"># FIXME: it is quite hard to be sure whether we should mimic the Java version</span>&#x000A;428:         <span class="ruby-comment cmt"># as there might be a lot of values that don't translate nicely to Strings.</span>&#x000A;429:         <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">child</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>&#x000A;430:       <span class="ruby-keyword kw">end</span>&#x000A;431:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">hash</span>&#x000A;432:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000073'>
+                <a name='M000073'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_s</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Get a String representation of this SDL <a href="Tag.html">Tag</a>. This
+                  method returns a complete description of the Tag&#8217;s state using SDL
+                  (i.e. the output can be parsed by <a href="Tag.html#M000070">read</a>)
+                  </p>
+                  <p>
+                  Returns A string representation of this tag using SDL
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000073-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000073-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 792</span>&#x000A;792:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>&#x000A;793:       <span class="ruby-identifier">to_string</span>&#x000A;794:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000074'>
+                <a name='M000074'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_string</span>
+                  <span class='arguments'>(line_prefix = &quot;&quot;, indent = &quot;\t&quot;)</span>
+                </div>
+                <div class='description'>
+                  <table>
+                  <tr><td valign="top"><em>linePrefix</em>:</td><td>A prefix to insert before every line.
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Returns A string representation of this tag using SDL
+                  </p>
+                  <p>
+                  TODO: break up long lines using the backslash
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000074-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000074-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 801</span>&#x000A;801:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_string</span>(<span class="ruby-identifier">line_prefix</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-value str">&quot;\t&quot;</span>)&#x000A;802:       <span class="ruby-identifier">line_prefix</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line_prefix</span>.<span class="ruby-identifier">nil?</span>&#x000A;803:       <span class="ruby-identifier">s</span> = <span class="ruby-value str">&quot;&quot;</span>&#x000A;804:       <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line_prefix</span>&#x000A;805:       &#x000A;806:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;content&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;807:         <span class="ruby-identifier">skip_value_space</span> = <span class="ruby-keyword kw">true</span>&#x000A;808:       <span class="ruby-keyword kw">else</span>&#x000A;809:         <span class="ruby-identifier">skip_value_space</span> = <span class="ruby-keyword kw">false</span>&#x000A;810:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{namespace}:&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;811:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>&#x000A;812:       <span class="ruby-keyword kw">end</span>&#x000A;813: &#x000A;814:       <span class="ruby-comment cmt"># output values</span>&#x000A;815:       <span class="ruby-identifier">values</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>&#x000A;816:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">skip_value_space</span>&#x000A;817:           <span class="ruby-identifier">skip_value_space</span> = <span class="ruby-keyword kw">false</span>&#x000A;818:         <span class="ruby-keyword kw">else</span>&#x000A;819:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; &quot;</span>&#x000A;820:         <span class="ruby-keyword kw">end</span>&#x000A;821:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">line_prefix</span>, <span class="ruby-identifier">indent</span>)&#x000A;822:       <span class="ruby-keyword kw">end</span>&#x000A;823: &#x000A;824:       <span class="ruby-comment cmt"># output attributes</span>&#x000A;825:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@attributesByNamespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;826:         <span class="ruby-identifier">all_attributes_hash</span> = <span class="ruby-identifier">attributes</span>&#x000A;827:         <span class="ruby-identifier">all_attributes_array</span> = <span class="ruby-identifier">all_attributes_hash</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span>&#x000A;828:           <span class="ruby-identifier">namespace1</span>, <span class="ruby-identifier">name1</span> = <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)&#x000A;829:           <span class="ruby-identifier">namespace1</span>, <span class="ruby-identifier">name1</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">namespace1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name1</span>.<span class="ruby-identifier">nil?</span>&#x000A;830:           <span class="ruby-identifier">namespace2</span>, <span class="ruby-identifier">name2</span> = <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">':'</span>)&#x000A;831:           <span class="ruby-identifier">namespace2</span>, <span class="ruby-identifier">name2</span> = <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">namespace2</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name2</span>.<span class="ruby-identifier">nil?</span>&#x000A;832: &#x000A;833:           <span class="ruby-identifier">diff</span> = <span class="ruby-identifier">namespace1</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">namespace2</span>&#x000A;834:           <span class="ruby-identifier">diff</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">name1</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">name2</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">diff</span>&#x000A;835:         }&#x000A;836:         <span class="ruby-identifier">all_attributes_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">attribute_value</span><span class="ruby-operator">|</span>&#x000A;837:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_name</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'='</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">attribute_value</span>, <span class="ruby-keyword kw">true</span>)&#x000A;838:         <span class="ruby-keyword kw">end</span>&#x000A;839:       <span class="ruby-keyword kw">end</span>&#x000A;840: &#x000A;841:       <span class="ruby-comment cmt"># output children</span>&#x000A;842:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">empty?</span>&#x000A;843:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; {#{$/}&quot;</span>&#x000A;844:         <span class="ruby-identifier">children_to_string</span>(<span class="ruby-identifier">line_prefix</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">indent</span>, <span class="ruby-identifier">s</span>)&#x000A;845:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line_prefix</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">?}</span>&#x000A;846:       <span class="ruby-keyword kw">end</span>&#x000A;847: &#x000A;848:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>&#x000A;849:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000079'>
+                <a name='M000079'></a>
+                <div class='synopsis'>
+                  <span class='name'>to_xml_string</span>
+                  <span class='arguments'>(options = {})</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a string containing an XML representation of this tag. Values will
+                  be represented using _val0, _val1, etc.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>options</em>:</td><td>a hash of the options
+                  
+                  </td></tr>
+                  </table>
+                  <h3>options:</h3>
+                  <dl>
+                  <dt>:line_prefix</dt><dd>a text prefixing each line (default: &#8220;&#8221;)
+                  
+                  </dd>
+                  <dt>:uri_by_namespace</dt><dd>a Hash giving the URIs for the namespaces
+                  
+                  </dd>
+                  <dt>:indent</dt><dd>text specifying one indentation (default: &#8220;t&#8220;)
+                  
+                  </dd>
+                  <dt>:eol</dt><dd>end of line expression (default: &#8220;n&#8220;)
+                  
+                  </dd>
+                  <dt>:omit_null_attributes</dt><dd>if true, null/nil attributes are not exported (default: false). Otherwise,
+                  they are exported as follows:
+                  
+                  <pre>tag attr=&quot;null&quot;</pre>
+                  </dd>
+                  </dl>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000079-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000079-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 899</span>&#x000A;899:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml_string</span>(<span class="ruby-identifier">options</span> = {})&#x000A;900:       <span class="ruby-identifier">options</span> = {&#x000A;901:         <span class="ruby-identifier">:uri_by_namespace</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,&#x000A;902:         <span class="ruby-identifier">:indent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;\t&quot;</span>,&#x000A;903:         <span class="ruby-identifier">:line_prefix</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;&quot;</span>,&#x000A;904:         <span class="ruby-identifier">:eol</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;\n&quot;</span>,&#x000A;905:         <span class="ruby-identifier">:omit_null_attributes</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>&#x000A;906:       }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)&#x000A;907:       <span class="ruby-identifier">_to_xml_string</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:line_prefix</span>], <span class="ruby-identifier">options</span>)&#x000A;908:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000045'>
+                <a name='M000045'></a>
+                <div class='synopsis'>
+                  <span class='name'>value</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  A convenience method that returns the first value.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000045-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000045-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 259</span>&#x000A;259:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value</span>&#x000A;260:       <span class="ruby-ivar">@values</span>[<span class="ruby-value">0</span>]&#x000A;261:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000044'>
+                <a name='M000044'></a>
+                <div class='synopsis'>
+                  <span class='name'>value=</span>
+                  <span class='arguments'>(value)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  A convenience method that sets the first value in the value list. See # <a
+                  href="Tag.html#M000054">add_value</a> for legal types.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>value</em>:</td><td>The value to be set.
+                  
+                  </td></tr>
+                  </table>
+                  <h3>Raises</h3>
+                  <table>
+                  <tr><td valign="top"><em>ArgumentError</em>:</td><td>if the value is not a legal SDL type
+                  
+                  </td></tr>
+                  </table>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000044-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000044-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 251</span>&#x000A;251:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value=</span>(<span class="ruby-identifier">value</span>)&#x000A;252:       <span class="ruby-ivar">@values</span>[<span class="ruby-value">0</span>] = <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">coerce_or_fail</span>(<span class="ruby-identifier">value</span>)&#x000A;253:       <span class="ruby-keyword kw">nil</span>&#x000A;254:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000058'>
+                <a name='M000058'></a>
+                <div class='synopsis'>
+                  <span class='name'>values</span>
+                  <span class='arguments'>( {|value| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns an Array of the values of this <a href="Tag.html">Tag</a> or
+                  enumerates them.
+                  </p>
+                  <pre>tag.values # =&gt; [123, &quot;spices&quot;]&#x000A;tag.values { |value| puts value }</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000058-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000058-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 478</span>&#x000A;478:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span> <span class="ruby-comment cmt"># :yields: value</span>&#x000A;479:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;480:         <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">v</span> }&#x000A;481:         <span class="ruby-keyword kw">nil</span>&#x000A;482:       <span class="ruby-keyword kw">else</span>&#x000A;483:         <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@values</span>&#x000A;484:       <span class="ruby-keyword kw">end</span>&#x000A;485:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000059'>
+                <a name='M000059'></a>
+                <div class='synopsis'>
+                  <span class='name'>values=</span>
+                  <span class='arguments'>(someValues)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Set the values for this tag. See <a href="Tag.html#M000054">add_value</a>
+                  for legal value types.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>values</em>:</td><td>The new values
+                  
+                  </td></tr>
+                  </table>
+                  <p>
+                  Raises an <tt>ArgumentError</tt> if the collection contains any values
+                  which are not legal SDL types.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000059-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000059-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 493</span>&#x000A;493:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values=</span>(<span class="ruby-identifier">someValues</span>)&#x000A;494:       <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">clear</span>()&#x000A;495:       <span class="ruby-identifier">someValues</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>&#x000A;496:         <span class="ruby-comment cmt"># this is required to ensure validation of types</span>&#x000A;497:         <span class="ruby-identifier">add_value</span>(<span class="ruby-identifier">v</span>)&#x000A;498:       }&#x000A;499:       <span class="ruby-keyword kw">nil</span>&#x000A;500:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000072'>
+                <a name='M000072'></a>
+                <div class='synopsis'>
+                  <span class='name'>write</span>
+                  <span class='arguments'>(output, include_root = false)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Write this tag out to the given IO or StringIO or String (optionally
+                  clipping the root.) Returns <tt>output</tt>.
+                  </p>
+                  <table>
+                  <tr><td valign="top"><em>output</em>:</td><td>an IO or StringIO or a String to write to
+                  
+                  </td></tr>
+                  <tr><td valign="top"><tt>include_root</tt>:</td><td>if true this tag will be written out as the root element, if false only the
+                  
+                  </td></tr>
+                  </table>
+                  <pre>children will be written. False by default.</pre>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000072-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000072-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 759</span>&#x000A;759:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">output</span>, <span class="ruby-identifier">include_root</span> = <span class="ruby-keyword kw">false</span>)&#x000A;760:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>&#x000A;761:         <span class="ruby-identifier">io</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">output</span>)&#x000A;762:         <span class="ruby-identifier">close_io</span> = <span class="ruby-keyword kw">true</span> <span class="ruby-comment cmt"># indicates we close the IO ourselves</span>&#x000A;763:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">IO</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">StringIO</span>&#x000A;764:         <span class="ruby-identifier">io</span> = <span class="ruby-identifier">output</span>&#x000A;765:         <span class="ruby-identifier">close_io</span> = <span class="ruby-keyword kw">false</span> <span class="ruby-comment cmt"># let the caller close the IO</span>&#x000A;766:       <span class="ruby-keyword kw">else</span>&#x000A;767:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;'output' should be a String or an IO but was #{output.class}&quot;</span>&#x000A;768:       <span class="ruby-keyword kw">end</span>&#x000A;769:       &#x000A;770:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_root</span>&#x000A;771:         <span class="ruby-identifier">io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">to_s</span>&#x000A;772:       <span class="ruby-keyword kw">else</span>&#x000A;773:         <span class="ruby-identifier">first</span> = <span class="ruby-keyword kw">true</span>&#x000A;774:         <span class="ruby-identifier">children</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;775:           <span class="ruby-identifier">io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">$/</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">first</span>&#x000A;776:           <span class="ruby-identifier">first</span> = <span class="ruby-keyword kw">false</span>&#x000A;777:           <span class="ruby-identifier">io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">to_s</span>&#x000A;778:         <span class="ruby-keyword kw">end</span>&#x000A;779:       <span class="ruby-keyword kw">end</span>&#x000A;780:       &#x000A;781:       <span class="ruby-identifier">io</span>.<span class="ruby-identifier">close</span>() <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">close_io</span>&#x000A;782: &#x000A;783:       <span class="ruby-identifier">output</span>&#x000A;784:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Protected instance methods</h2>
+              <div class='method protected-instance' id='method-M000080'>
+                <a name='M000080'></a>
+                <div class='synopsis'>
+                  <span class='name'>_to_xml_string</span>
+                  <span class='arguments'>(line_prefix, options)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Implementation of <a href="Tag.html#M000079">to_xml_string</a> but without
+                  the extra-treatment on parameters for default values.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000080-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000080-source'>     <span class="ruby-comment cmt"># File lib/sdl4r/tag.rb, line 914</span>&#x000A;914:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_to_xml_string</span>(<span class="ruby-identifier">line_prefix</span>, <span class="ruby-identifier">options</span>)&#x000A;915:       <span class="ruby-identifier">eol</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:eol</span>]&#x000A;916: &#x000A;917:       <span class="ruby-identifier">s</span> = <span class="ruby-value str">&quot;&quot;</span>&#x000A;918:       <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line_prefix</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">?&lt;</span>&#x000A;919:       <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{namespace}:&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;920:       <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>&#x000A;921: &#x000A;922:       <span class="ruby-comment cmt"># output namespace declarations</span>&#x000A;923:       <span class="ruby-identifier">uri_by_namespace</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:uri_by_namespace</span>]&#x000A;924:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uri_by_namespace</span>&#x000A;925:         <span class="ruby-identifier">uri_by_namespace</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">uri</span><span class="ruby-operator">|</span>&#x000A;926:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">namespace</span>&#x000A;927:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; xmlns:#{namespace}=\&quot;#{uri}\&quot;&quot;</span>&#x000A;928:           <span class="ruby-keyword kw">else</span>&#x000A;929:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; xmlns=\&quot;#{uri}\&quot;&quot;</span>&#x000A;930:           <span class="ruby-keyword kw">end</span>&#x000A;931:         <span class="ruby-keyword kw">end</span>&#x000A;932:       <span class="ruby-keyword kw">end</span>&#x000A;933:       &#x000A;934:       <span class="ruby-comment cmt"># output values</span>&#x000A;935:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">empty?</span>&#x000A;936:         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>&#x000A;937:         <span class="ruby-ivar">@values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>&#x000A;938:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; _val&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;=\&quot;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">value</span>, <span class="ruby-keyword kw">false</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\&quot;&quot;</span>&#x000A;939:           <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>&#x000A;940:         <span class="ruby-keyword kw">end</span>&#x000A;941:       <span class="ruby-keyword kw">end</span>&#x000A;942:       &#x000A;943:       <span class="ruby-comment cmt"># output attributes</span>&#x000A;944:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_attribute?</span>&#x000A;945:         <span class="ruby-identifier">omit_null_attributes</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:omit_null_attributes</span>]&#x000A;946:         <span class="ruby-identifier">attributes</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute_namespace</span>, <span class="ruby-identifier">attribute_name</span>, <span class="ruby-identifier">attribute_value</span><span class="ruby-operator">|</span>&#x000A;947:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">omit_null_attributes</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">attribute_value</span>.<span class="ruby-identifier">nil?</span>&#x000A;948:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; &quot;</span>&#x000A;949:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{attribute_namespace}:&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">attribute_namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;950:             <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_name</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;=\&quot;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SDL4R</span>.<span class="ruby-identifier">format</span>(<span class="ruby-identifier">attribute_value</span>, <span class="ruby-keyword kw">false</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">?&quot;</span>&#x000A;951:           <span class="ruby-keyword kw">end</span>&#x000A;952:         <span class="ruby-keyword kw">end</span>&#x000A;953:       <span class="ruby-keyword kw">end</span>&#x000A;954:   &#x000A;955:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">empty?</span>&#x000A;956:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;/&gt;&quot;</span>&#x000A;957:       <span class="ruby-keyword kw">else</span>&#x000A;958:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&gt;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">eol</span>&#x000A;959:         <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>&#x000A;960:           <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">_to_xml_string</span>(<span class="ruby-identifier">line_prefix</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:indent</span>], <span class="ruby-identifier">options</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">eol</span>&#x000A;961:         <span class="ruby-keyword kw">end</span>&#x000A;962:         &#x000A;963:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line_prefix</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/&quot;</span>&#x000A;964:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{namespace}:&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">namespace</span>.<span class="ruby-identifier">empty?</span>&#x000A;965:         <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">?&gt;</span>&#x000A;966:       <span class="ruby-keyword kw">end</span>&#x000A;967:   &#x000A;968:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>&#x000A;969:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

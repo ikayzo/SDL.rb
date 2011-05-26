@@ -1,0 +1,112 @@
+[x] Is Base64 really compatible with the format defined in the Java version ?
+    ==> Seems so after having implemented more of the standard tests.
+[ ] Add more unit tests
+    [x] Attribute tests
+    [x] Date tests
+    [x] Date + time test
+    [x] Time zone tests
+    [x] Number literal tests
+    [x] Strings literals (especially with line continuations)
+    [x] Sub tags tests
+    [x] "null" value test
+    [x] Comment tests
+    [ ] Bad syntax tests
+[ ] Test write (unit tests)
+    [ ] Dates
+    [ ] Numbers
+[A] Use YARD in order to generate documentation ?
+    ==> alternatively, I tried to generate some RDoc templates but none worked in Rake...
+[ ] BUG: the line number is too high by 1 (the column is correct).
+[/] Fix the differences between test_basic_types.sdl and what is generated from the parsed structure
+    [x] chars
+    [x] longs
+    [x] doubles
+    [x] decimals
+    [x] booleans
+    [x] null
+    [x] dates
+    [x] times
+        [x] negative times
+    [x] datetimes
+        [/] zone codes
+        ==> Time only works in UTC, which means that the original zone code is lost.
+        ==> DateTime doesn't give the zone code but only the offset.
+        [ ] Use TzTime? Use a custom object that knows whether a time zone was specified?
+            ==> http://tztime.rubyforge.org/
+            ==> along with TzInfo: http://tzinfo.rubyforge.org/
+[ ] See how Ruby floats relate to Java floats and doubles.
+[ ] Add tests for the SDL class
+[ ] Allow unicode characters in identifiers.
+[ ] FUTURE: It might be useful to allow people to replace the standard types by their own. This
+    could be useful for dates or numbers, for instance.
+[N] To install a gem in the Netbeans gems repository, it needs to run as an administrator.
+    Otherwise, it fails silently.
+[ ] FUTURE: Consider being able to read text files that are not UTF-8(?)
+[ ] BUG: the report on the line no in errors is off by 1 (at least in some cases)
+[x] Return copies or original arrays in Tag?
+    ==> we return the implementation Arrays or Hashes (or whatever) for efficiency.
+        However, we ask the users not to assume anything as we might protect the returned objects in
+        the future.
+[ ] Tag.hash: the implementation is not very efficient.
+    ==> Difficult to make better and still simple
+    ==> Maybe possible when it's frozen.
+[ ] FUTURE: xpath, ypath ==> sdlpath(?)
+[ ] FUTURE: evenemential parsing(?)
+[ ] FUTURE: add a way to insert a tag after or before another(?)
+[ ] FUTURE: allow some way of generating YAML(?)
+[ ] FUTURE: allow to turn a YAML structure into a SDL one(?)
+[ ] BUG: "rake package" tries to archive the contents twice: once with the command that I configure
+    in Rakefile, once with a zip command that can't work on my machine (zip is not installed). Why?
+    At least, the first archive is created and seems correct.
+[ ] FUTURE: Would we need a "write" method in SDL4R?
+[x] Add tests and release a RC or beta version
+[x] Make the methods of Tag that take a block have a better yield doc/completion
+    ==> I added :yields: RDoc directives, which doesn't look like it's helping but I guess that's
+        all I can do for now.
+[N] Never call a class "Test" => it can easily conflict with the "Test" module of Test::Unit and
+    then, it becomes quite difficult to understand why.
+[ ] Input relevant URLs on http://rubygems.org
+[x] What prevents from doing the following?
+    tag.values << IO.new("toto.txt")
+    ==> It doesn't break the behavior as long as the value type is OK. Even if it is not allowed,
+        it still is not too bad.
+[x] Look at the returned values of method who do not have their return values documented e.g.
+    Tag.add_value
+    ==> Minor change: we return nil for the methods were nothing was really returned explicitely
+        (for the time being).
+[x] If there is any success, maybe create/recreate the Rubyforge site for the support.
+[ ] Should we allow to create a Tag without a name (== "content") for anonymous Tags?
+[x] It would be cool to be able to write this:
+
+    Tag.new "toto" do |tag|
+        tag << 123
+    end
+
+    ==> We can detect whether there is an argument or not.
+
+Note that instance_eval() doesn't allow to pass parameters right now.
+[ ] Add latest doc access to RubyForge:
+    ==> Rake task?
+
+[x] Is it right to translate the SDL
+        attr1=null
+    into the XML
+        attr1="null"
+    ?
+    Should we remove the attribute altogether? Check the Java version => same in Java
+    ==> Maybe provide an options Hash in to_xml_string():
+            :uri_by_namespace => {...} (breaks the old interface)
+            :hide_null_attributes => true|false
+[x] Where we accept Arrays (operator <<, for instance), let's accept Enumerable or something like
+	that.
+[ ] Implement the [] operator in order to access attributes:
+    ["attr"] <=> attribute("attr")
+    ["ns:attr"] <=> attribute("ns", "attr") (should we allow this?)
+    ["ns", "attr"] <=> attribute("ns", "attr")
+    Should we allow attribute("ns:attr")?
+[ ] IDEA: marshaller? easy object <=> SDL read/write?
+[ ] Check the coverage and make the tests better.
+[ ] IDEA: add an option to the XML export allowing to write anonymous nodes as XML tag content?
+[ ] IDEA: add an option to the XML export allowing to export without formatting?
+[x] BUG: line continuation is not handled properly (skipping chars etc).
+[ ] BUG: the rake task 'gen_rubyforge' doesn't work under 1.9 (only 1.8.7)

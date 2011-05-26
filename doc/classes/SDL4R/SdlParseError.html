@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: SDL4R::SdlParseError [RDoc: Simple Declarative Language for Ruby]</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Class</span>
+          SDL4R::SdlParseError
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../files/lib/sdl4r/sdl_parse_error_rb.html">lib/sdl4r/sdl_parse_error.rb</a>
+          </li>
+        </ol>
+        <div class='parent'>
+          Parent:
+          <strong>StandardError</strong>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            An exception describing a problem with an SDL document&#8217;s structure
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000037">new</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='attribute-list'>
+              <h2 class='section-bar'>Attributes</h2>
+              <div class='name-list'>
+                <table>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>line</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'></td>
+                  </tr>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>position</td>
+                    <td class='context-item-value'>[R]</td>
+                    <td class='context-item-desc'></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000037'>
+                <a name='M000037'></a>
+                <div class='synopsis'>
+                  <span class='name'>new</span>
+                  <span class='arguments'>(description, line_no, position, line = nil)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Note: Line and positioning numbering start with 1 rather than 0 to be
+                  consistent with most editors.
+                  </p>
+                  <p>
+                  <tt>description</tt> A description of the problem. <tt>lineNo</tt> The line
+                  on which the error occured or -1 for unknown <tt>position</tt> The position
+                  (within the line) where the error occured or -1 for unknown
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000037-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000037-source'>    <span class="ruby-comment cmt"># File lib/sdl4r/sdl_parse_error.rb, line 36</span>&#x000A;36:                 <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">description</span>, <span class="ruby-identifier">line_no</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">line</span> = <span class="ruby-keyword kw">nil</span>)&#x000A;37:                         <span class="ruby-keyword kw">super</span>(&#x000A;38:                                 <span class="ruby-node">&quot;#{description} Line &quot;</span> <span class="ruby-operator">+</span> ((<span class="ruby-identifier">line_no</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">line_no</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>)<span class="ruby-operator">?</span> <span class="ruby-value str">&quot;unknown&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">line_no</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">+</span>&#x000A;39:                                         <span class="ruby-value str">&quot;, Position &quot;</span> <span class="ruby-operator">+</span> ((<span class="ruby-identifier">position</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">position</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>)<span class="ruby-operator">?</span> <span class="ruby-value str">&quot;unknown&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">$/</span> <span class="ruby-operator">+</span>&#x000A;40:           (<span class="ruby-identifier">line</span> <span class="ruby-value">? </span><span class="ruby-identifier">line</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">position</span> <span class="ruby-value">? </span><span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">position</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;^&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>))&#x000A;41:           &#x000A;42:                         <span class="ruby-ivar">@line</span> = <span class="ruby-identifier">line_no</span>&#x000A;43:                         <span class="ruby-ivar">@position</span> = <span class="ruby-identifier">position</span>&#x000A;44:                 <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

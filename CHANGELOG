@@ -1,0 +1,97 @@
+== v0.9.8 (建設中)
+
+== v0.9.7 (26-auf-2010)
+
+=== Major changes:
+
+* It could prove a hassle to use the block idiom of Tag.new or Tag.new_child when handling another
+  set of data. Therefore, if the given block takes a (not-optional) parameter, the context remains
+  the context of the calling code.
+
+    class Elephant
+
+      def initialize
+         @weight = 1000
+      end
+
+      def to_sdl
+        SDL4R::Tag.new("elephant") do |tag|
+          tag.set_attribute("weight", @weight)
+          tag << "I love pink ones."
+        end
+      end
+
+    end
+
+    puts Elephant.new.to_sdl.to_s # ==> elephant "I love pink ones." weight=1000
+
+* Tag.to_xml_string() has been refactor to take an option Hash (backward incompatible):
+
+  [:line_prefix] a text prefixing each line (default: "")
+  [:uri_by_namespace] a Hash giving the URIs for the namespaces
+  [:indent] text specifying one indentation (default: "\t")
+  [:eol] end of line expression (default: "\n")
+  [:omit_null_attributes]
+    if true, null/nil attributes are not exported (default: false). Otherwise, they are exported
+    as follows:
+      tag attr="null"
+
+* Fixed the parsing of line continuations with anti-slashes.
+* Fixed the parsing of double-quoted strings. It is better at detecting badly formed strings, now.
+* Fixed the reporting of lines and columns in errors.
+  Although the column might be slightly off sometimes, the line should be correct.
+
+
+=== Minor changes:
+
+* The RDoc is now generated with the template Hanna[http://github.com/mislav/hanna/tree/master].
+* Tag.<< now behaves with Enumerables (except Strings) as it does with Arrays.
+
+== v0.9.6 (10-aug-2010)
+
+=== Major changes:
+
+* Tag.set_attribute(): fixed as it failed if the value was nil.
+* Tag.write(): now returns the given output (especially necessary if a String was given).
+* Tag.write(): fixed as it failed when writing children without including the root Tag.
+* Tag.write(): it is now possible to give a StringIO as an output
+
+== v0.9.5 (8-aug-2010)
+
+=== Major changes:
+
+* Fixes in order to make SDL4R work in Ruby 1.9 (mainly concerning encodings and dates).
+* Commented out debug code (writing to files) inside sdl4r_test.rb.
+
+=== Minor changes:
+
+* General & contact info in the README
+
+== v0.9.4 (6-aug-2010)
+
+=== Major changes:
+
+* The use of BigDecimal (standard) has been preferred to Flt::DecNum.
+* "sdl4r/sdl.rb" has been renamed to "sdl4r/sdl4r.rb"
+* A sdl4r.rb has been added so that users can actually write (as the documentation pretended):
+
+    require 'sdl4r'
+
+* SDL4R#coerce_or_fail has been implemented, which means that random objects cannot be added to a
+  Tag as before. Rational instances are coerced using Rational#to_f.
+* Added usual time methods to SdlTimeSpan: day(), hour(), min(), sec(), usec()
+
+== v0.9.3
+
+=== Major changes
+
+* Tag: any method that use to take namespace/name parameters now follows the natural order
+  "namespace" and then "name":
+
+    Tag.new "ns1", "tag1"
+
+  WARNING: this was the contrary before!!!
+  Also, the "recursive" parameter should always be at the first place now.
+
+* It is now possible to override SDL4R::new_date_time in order to create Time instances when parsing
+  rather than DateTime instances.
